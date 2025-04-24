@@ -1,0 +1,92 @@
+[26-Mar-2024 16:13:49 Asia/Karachi] PHP Notice:  Undefined variable: is_deleted in /home/neotericschools/public_html/mcdl.mul.edu.pk/include/headoffice/pma/browse.php on line 90
+[26-Mar-2024 16:13:57 Asia/Karachi] PHP Notice:  Undefined variable: is_deleted in /home/neotericschools/public_html/mcdl.mul.edu.pk/include/headoffice/pma/browse.php on line 90
+[26-Mar-2024 16:14:36 Asia/Karachi] PHP Notice:  Undefined variable: is_deleted in /home/neotericschools/public_html/mcdl.mul.edu.pk/include/headoffice/pma/browse.php on line 90
+[26-Mar-2024 16:14:39 Asia/Karachi] PHP Notice:  Undefined variable: is_deleted in /home/neotericschools/public_html/mcdl.mul.edu.pk/include/headoffice/pma/browse.php on line 90
+[26-Mar-2024 16:14:44 Asia/Karachi] PHP Notice:  Undefined variable: is_deleted in /home/neotericschools/public_html/mcdl.mul.edu.pk/include/headoffice/pma/browse.php on line 90
+[26-Mar-2024 16:18:03 Asia/Karachi] PHP Notice:  Undefined variable: is_deleted in /home/neotericschools/public_html/mcdl.mul.edu.pk/include/headoffice/pma/browse.php on line 90
+[26-Mar-2024 16:18:10 Asia/Karachi] PHP Notice:  Undefined variable: is_deleted in /home/neotericschools/public_html/mcdl.mul.edu.pk/include/headoffice/pma/browse.php on line 90
+[26-Mar-2024 16:22:02 Asia/Karachi] PHP Notice:  Undefined variable: is_deleted in /home/neotericschools/public_html/mcdl.mul.edu.pk/include/headoffice/pma/browse.php on line 90
+[26-Mar-2024 16:41:01 Asia/Karachi] PHP Notice:  Undefined variable: is_deleted in /home/neotericschools/public_html/mcdl.mul.edu.pk/include/headoffice/pma/browse.php on line 90
+[27-Mar-2024 10:14:30 Asia/Karachi] PHP Notice:  Undefined variable: is_deleted in /home/neotericschools/public_html/mcdl.mul.edu.pk/include/headoffice/pma/browse.php on line 90
+[27-Mar-2024 10:14:38 Asia/Karachi] PHP Notice:  Undefined variable: is_deleted in /home/neotericschools/public_html/mcdl.mul.edu.pk/include/headoffice/pma/browse.php on line 90
+[28-Mar-2024 05:48:09 UTC] PHP Fatal error:  Uncaught Error: Class 'ZipArchive' not found in /home/neotericschools/public_html/mcdl.mul.edu.pk/unzipper.php:10
+Stack trace:
+#0 {main}
+  thrown in /home/neotericschools/public_html/mcdl.mul.edu.pk/unzipper.php on line 10
+[28-Mar-2024 05:48:13 UTC] PHP Fatal error:  Uncaught Error: Class 'ZipArchive' not found in /home/neotericschools/public_html/mcdl.mul.edu.pk/unzipper.php:10
+Stack trace:
+#0 {main}
+  thrown in /home/neotericschools/public_html/mcdl.mul.edu.pk/unzipper.php on line 10
+[28-Mar-2024 05:51:16 UTC] PHP Fatal error:  Uncaught Error: Class 'ZipArchive' not found in /home/neotericschools/public_html/mcdl.mul.edu.pk/unzipper.php:10
+Stack trace:
+#0 {main}
+  thrown in /home/neotericschools/public_html/mcdl.mul.edu.pk/unzipper.php on line 10
+[28-Mar-2024 05:51:35 UTC] PHP Fatal error:  Uncaught Error: Class 'ZipArchive' not found in /home/neotericschools/public_html/mcdl.mul.edu.pk/unzipper.php:10
+Stack trace:
+#0 {main}
+  thrown in /home/neotericschools/public_html/mcdl.mul.edu.pk/unzipper.php on line 10
+[28-Mar-2024 09:49:47 UTC] PHP Fatal error:  Uncaught Error: Call to undefined function moduleName() in /home/neotericschools/public_html/mcdl.mul.edu.pk/courses.php:2
+Stack trace:
+#0 {main}
+  thrown in /home/neotericschools/public_html/mcdl.mul.edu.pk/courses.php on line 2
+[28-Mar-2024 09:49:51 UTC] PHP Fatal error:  Uncaught Error: Call to undefined function moduleName() in /home/neotericschools/public_html/mcdl.mul.edu.pk/courses.php:2
+Stack trace:
+#0 {main}
+  thrown in /home/neotericschools/public_html/mcdl.mul.edu.pk/courses.php on line 2
+[28-Mar-2024 09:49:59 UTC] PHP Fatal error:  Uncaught Error: Call to undefined function moduleName() in /home/neotericschools/public_html/mcdl.mul.edu.pk/courses.php:2
+Stack trace:
+#0 {main}
+  thrown in /home/neotericschools/public_html/mcdl.mul.edu.pk/courses.php on line 2
+[28-Mar-2024 09:50:59 UTC] PHP Fatal error:  Uncaught Error: Call to undefined function moduleName() in /home/neotericschools/public_html/mcdl.mul.edu.pk/courses.php:2
+Stack trace:
+#0 {main}
+  thrown in /home/neotericschools/public_html/mcdl.mul.edu.pk/courses.php on line 2
+[28-Mar-2024 09:51:39 UTC] PHP Fatal error:  Uncaught Error: Call to undefined function moduleName() in /home/neotericschools/public_html/mcdl.mul.edu.pk/courses.php:2
+Stack trace:
+#0 {main}
+  thrown in /home/neotericschools/public_html/mcdl.mul.edu.pk/courses.php on line 2
+[28-Mar-2024 09:51:54 UTC] PHP Fatal error:  Uncaught Error: Call to undefined function moduleName() in /home/neotericschools/public_html/mcdl.mul.edu.pk/courses.php:2
+Stack trace:
+#0 {main}
+  thrown in /home/neotericschools/public_html/mcdl.mul.edu.pk/courses.php on line 2
+[28-Mar-2024 09:51:55 UTC] PHP Fatal error:  Uncaught Error: Call to undefined function moduleName() in /home/neotericschools/public_html/mcdl.mul.edu.pk/courses.php:2
+Stack trace:
+#0 {main}
+  thrown in /home/neotericschools/public_html/mcdl.mul.edu.pk/courses.php on line 2
+[28-Mar-2024 09:52:21 UTC] PHP Fatal error:  Uncaught Error: Call to undefined function moduleName() in /home/neotericschools/public_html/mcdl.mul.edu.pk/courses.php:2
+Stack trace:
+#0 {main}
+  thrown in /home/neotericschools/public_html/mcdl.mul.edu.pk/courses.php on line 2
+[28-Mar-2024 15:10:28 Asia/Karachi] PHP Notice:  Undefined variable: is_deleted in /home/neotericschools/public_html/mcdl.mul.edu.pk/include/headoffice/pma/browse.php on line 90
+[28-Mar-2024 15:10:44 Asia/Karachi] PHP Notice:  Undefined variable: is_deleted in /home/neotericschools/public_html/mcdl.mul.edu.pk/include/headoffice/pma/browse.php on line 90
+[28-Mar-2024 15:14:14 Asia/Karachi] PHP Warning:  mysqli_num_rows() expects parameter 1 to be mysqli_result, bool given in /home/neotericschools/public_html/mcdl.mul.edu.pk/include/headoffice/pma/sql.php on line 73
+[28-Mar-2024 15:14:14 Asia/Karachi] PHP Warning:  mysqli_num_rows() expects parameter 1 to be mysqli_result, bool given in /home/neotericschools/public_html/mcdl.mul.edu.pk/include/headoffice/pma/sql.php on line 82
+[28-Mar-2024 15:14:51 Asia/Karachi] PHP Notice:  Undefined variable: is_deleted in /home/neotericschools/public_html/mcdl.mul.edu.pk/include/headoffice/pma/browse.php on line 90
+[28-Mar-2024 15:16:53 Asia/Karachi] PHP Notice:  Undefined variable: is_deleted in /home/neotericschools/public_html/mcdl.mul.edu.pk/include/headoffice/pma/browse.php on line 90
+[28-Mar-2024 15:17:04 Asia/Karachi] PHP Notice:  Undefined variable: is_deleted in /home/neotericschools/public_html/mcdl.mul.edu.pk/include/headoffice/pma/browse.php on line 90
+[28-Mar-2024 15:17:10 Asia/Karachi] PHP Notice:  Undefined variable: is_deleted in /home/neotericschools/public_html/mcdl.mul.edu.pk/include/headoffice/pma/browse.php on line 90
+[28-Mar-2024 15:17:25 Asia/Karachi] PHP Notice:  Undefined variable: is_deleted in /home/neotericschools/public_html/mcdl.mul.edu.pk/include/headoffice/pma/browse.php on line 90
+[28-Mar-2024 15:18:02 Asia/Karachi] PHP Notice:  Undefined variable: is_deleted in /home/neotericschools/public_html/mcdl.mul.edu.pk/include/headoffice/pma/browse.php on line 90
+[28-Mar-2024 15:18:09 Asia/Karachi] PHP Notice:  Undefined variable: is_deleted in /home/neotericschools/public_html/mcdl.mul.edu.pk/include/headoffice/pma/browse.php on line 90
+[28-Mar-2024 15:18:12 Asia/Karachi] PHP Notice:  Undefined variable: is_deleted in /home/neotericschools/public_html/mcdl.mul.edu.pk/include/headoffice/pma/browse.php on line 90
+[28-Mar-2024 15:18:21 Asia/Karachi] PHP Notice:  Undefined variable: is_deleted in /home/neotericschools/public_html/mcdl.mul.edu.pk/include/headoffice/pma/browse.php on line 90
+[28-Mar-2024 15:18:27 Asia/Karachi] PHP Notice:  Undefined variable: is_deleted in /home/neotericschools/public_html/mcdl.mul.edu.pk/include/headoffice/pma/browse.php on line 90
+[28-Mar-2024 15:18:46 Asia/Karachi] PHP Notice:  Undefined variable: is_deleted in /home/neotericschools/public_html/mcdl.mul.edu.pk/include/headoffice/pma/browse.php on line 90
+[28-Mar-2024 15:19:07 Asia/Karachi] PHP Notice:  Undefined variable: is_deleted in /home/neotericschools/public_html/mcdl.mul.edu.pk/include/headoffice/pma/browse.php on line 90
+[28-Mar-2024 15:19:18 Asia/Karachi] PHP Notice:  Undefined variable: is_deleted in /home/neotericschools/public_html/mcdl.mul.edu.pk/include/headoffice/pma/browse.php on line 90
+[28-Mar-2024 15:19:43 Asia/Karachi] PHP Notice:  Undefined variable: is_deleted in /home/neotericschools/public_html/mcdl.mul.edu.pk/include/headoffice/pma/browse.php on line 90
+[28-Mar-2024 15:20:50 Asia/Karachi] PHP Notice:  Undefined variable: is_deleted in /home/neotericschools/public_html/mcdl.mul.edu.pk/include/headoffice/pma/browse.php on line 90
+[28-Mar-2024 15:21:26 Asia/Karachi] PHP Notice:  Undefined variable: is_deleted in /home/neotericschools/public_html/mcdl.mul.edu.pk/include/headoffice/pma/browse.php on line 90
+[01-Apr-2024 15:08:48 Asia/Karachi] PHP Warning:  mysqli_num_rows() expects parameter 1 to be mysqli_result, bool given in /home/neotericschools/public_html/mcdl.mul.edu.pk/include/headoffice/pma/sql.php on line 93
+[01-Apr-2024 15:11:52 Asia/Karachi] PHP Warning:  mysqli_num_rows() expects parameter 1 to be mysqli_result, bool given in /home/neotericschools/public_html/mcdl.mul.edu.pk/include/headoffice/pma/sql.php on line 93
+[01-Apr-2024 15:14:18 Asia/Karachi] PHP Warning:  mysqli_num_rows() expects parameter 1 to be mysqli_result, bool given in /home/neotericschools/public_html/mcdl.mul.edu.pk/include/headoffice/pma/sql.php on line 93
+[01-Apr-2024 15:36:44 Asia/Karachi] PHP Warning:  mysqli_num_rows() expects parameter 1 to be mysqli_result, bool given in /home/neotericschools/public_html/mcdl.mul.edu.pk/include/headoffice/pma/sql.php on line 93
+[01-Apr-2024 16:35:20 Asia/Karachi] PHP Notice:  Undefined index: id_week) in /home/neotericschools/public_html/mcdl.mul.edu.pk/include/headoffice/pma/sql.php on line 116
+[01-Apr-2024 16:35:20 Asia/Karachi] PHP Notice:  Undefined index: ' in /home/neotericschools/public_html/mcdl.mul.edu.pk/include/headoffice/pma/sql.php on line 116
+[01-Apr-2024 16:35:20 Asia/Karachi] PHP Notice:  Undefined index: ' in /home/neotericschools/public_html/mcdl.mul.edu.pk/include/headoffice/pma/sql.php on line 116
+[01-Apr-2024 16:35:20 Asia/Karachi] PHP Notice:  Undefined index: id_week) in /home/neotericschools/public_html/mcdl.mul.edu.pk/include/headoffice/pma/sql.php on line 116
+[01-Apr-2024 16:35:20 Asia/Karachi] PHP Notice:  Undefined index: ' in /home/neotericschools/public_html/mcdl.mul.edu.pk/include/headoffice/pma/sql.php on line 116
+[01-Apr-2024 16:35:20 Asia/Karachi] PHP Notice:  Undefined index: ' in /home/neotericschools/public_html/mcdl.mul.edu.pk/include/headoffice/pma/sql.php on line 116
+[25-Apr-2024 10:46:58 Asia/Karachi] PHP Notice:  Trying to access array offset on value of type bool in /home/neotericschools/public_html/mcdl.mul.edu.pk/include/headoffice/pma/browse.php on line 45
+[25-Apr-2024 10:46:58 Asia/Karachi] PHP Warning:  mysqli_num_rows() expects parameter 1 to be mysqli_result, bool given in /home/neotericschools/public_html/mcdl.mul.edu.pk/include/dbsetting/classdbconection.php on line 141
+[25-Apr-2024 10:46:58 Asia/Karachi] PHP Warning:  mysqli_num_rows() expects parameter 1 to be mysqli_result, bool given in /home/neotericschools/public_html/mcdl.mul.edu.pk/include/dbsetting/classdbconection.php on line 150

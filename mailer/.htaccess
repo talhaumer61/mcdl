@@ -1,0 +1,19 @@
+RewriteEngine on
+
+RewriteRule ^([a-zA-Z0-9_-]+)$ index.php?control=$1 [QSA]
+RewriteRule ^([a-zA-Z0-9_-]+)/$ index.php?control=$1 [QSA]
+
+RewriteRule ^([a-zA-Z0-9_-]+)/page/(.*)/ index.php?control=$1&page=$2 [QSA]
+RewriteRule ^([a-zA-Z0-9_-]+)/page/(.*) index.php?control=$1&page=$2 [QSA]
+
+RewriteRule ^([a-zA-Z0-9_-]+)/([a-zA-Z0-9_-]+)$ index.php?control=$1&zone=$2 [QSA]
+RewriteRule ^([a-zA-Z0-9_-]+)/([a-zA-Z0-9_-]+)/$ index.php?control=$1&zone=$2 [QSA]
+
+RewriteRule ^([a-zA-Z0-9_-]+)/([a-zA-Z0-9_-]+)/([a-zA-Z0-9_-]+)$ index.php?control=$1&zone=$2&view=$3 [QSA]
+RewriteRule ^([a-zA-Z0-9_-]+)/([a-zA-Z0-9_-]+)/([a-zA-Z0-9_-]+)/$ index.php?control=$1&zone=$2&view=$3 [QSA]
+
+RewriteRule ^([a-zA-Z0-9_-]+)/([a-zA-Z0-9_-]+)/([a-zA-Z0-9_-]+)/([a-zA-Z0-9_-]+)$ index.php?control=$1&zone=$2&view=$3&slug=$4 [QSA]
+RewriteRule ^([a-zA-Z0-9_-]+)/([a-zA-Z0-9_-]+)/([a-zA-Z0-9_-]+)/([a-zA-Z0-9_-]+)/$ index.php?control=$1&zone=$2&view=$3&slug=$4 [QSA]
+
+RewriteRule ^(.*)\.html$ $1.php
+RewriteRule ^index index.php
