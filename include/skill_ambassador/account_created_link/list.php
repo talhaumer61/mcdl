@@ -49,6 +49,10 @@ echo'
     <div class="card-header">
         <div class="d-flex align-items-center">
             <h5 class="card-title mb-0 flex-grow-1"><i class="ri-file-paper-2-fill align-bottom me-1"></i>'.moduleName(false).' List</h5>
+            <div class="flex-shrink-0">
+                <button onclick="print_report(\'printResult\')" class="mr-xs btn btn-danger btn-xs"><i class="ri-printer-line align-middle"></i> Print</button>
+                <button id="export_button" class="btn btn-success btn-xs"><i class="ri-upload-cloud-line align-middle"></i> Excel</button>
+            </div>
         </div>
     </div>
     <div class="card-body">        
@@ -74,7 +78,8 @@ echo'
         $rowslist = $dblms->getRows(STUDENTS.' AS s ', $condition);
         if ($rowslist) {
             echo'
-            <div class="table-responsive table-card">
+            <div class="table-responsive table-card" id="printResult">
+                <div id="header" style="display:none;">'.moduleName(false).' List</div>
                 <table class="table mb-0">
                     <thead class="table-light">
                         <tr>
@@ -138,3 +143,4 @@ echo'
     </div>
 </div>';
 ?>
+

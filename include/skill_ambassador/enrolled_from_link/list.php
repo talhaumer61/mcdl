@@ -30,7 +30,7 @@ if (!empty($_GET['search_word'])) {
 }
 
 $condition  =   [
-                    'select'        =>  'po.org_name as parent_name, po.org_profit_percentage as parent_profit, o.org_name, o.org_type, s.id_org, a.adm_photo, a.adm_email, a.adm_username, a.adm_status, o.org_profit_percentage, f.challan_id, f.challan_no, f.paid_amount, f.currency_code, f.id_enroll',
+                    'select'        =>  'po.org_name as parent_name, po.org_profit_percentage as parent_profit, o.org_name, o.org_type, s.id_org, a.adm_photo, a.adm_email, a.adm_username, a.adm_fullname, a.adm_status, o.org_profit_percentage, f.challan_id, f.challan_no, f.paid_amount, f.currency_code, f.id_enroll',
                     'join'          =>  'INNER JOIN '.ADMINS.' AS a ON s.std_loginid = a.adm_id
                                          INNER JOIN '.ENROLLED_COURSES.' AS ec ON ec.id_std = s.std_id AND ec.id_org = s.id_org AND ec.secs_status = 1 AND ec.is_deleted = 0
                                          INNER JOIN '.SKILL_AMBASSADOR.' o ON o.org_id = s.id_org AND o.org_status = 1 AND o.is_deleted = 0
@@ -50,6 +50,10 @@ echo'
     <div class="card-header">
         <div class="d-flex align-items-center">
             <h5 class="card-title mb-0 flex-grow-1"><i class="ri-file-paper-2-fill align-bottom me-1"></i>'.moduleName(false).' List</h5>
+            <div class="flex-shrink-0">
+                <button onclick="print_report(\'printResult\')" class="mr-xs btn btn-danger btn-xs"><i class="ri-printer-line align-middle"></i> Print</button>
+                <button id="export_button" class="btn btn-success btn-xs"><i class="ri-upload-cloud-line align-middle"></i> Excel</button>
+            </div>
         </div>
     </div>
     <div class="card-body">
@@ -75,7 +79,8 @@ echo'
         $rowslist = $dblms->getRows(STUDENTS.' AS s ', $condition);
         if ($rowslist) {
             echo'
-            <div class="table-responsive table-card">
+            <div class="table-responsive table-card" id="printResult">
+                <div id="header" style="display:none;">'.moduleName(false).' List</div>
                 <table class="table mb-0">
                     <thead class="table-light">
                         <tr>
@@ -154,4 +159,38 @@ echo'
         echo'
     </div>
 </div>';
+if (isset($_GET['export']) && $_GET['export'] == 1) {
+    // Turn off output buffering to prevent HTML junk
+    if (ob_get_length()) ob_end_clean();
+
+    // Set headers for Excel
+    header('Content-Type: application/vnd.ms-excel; charset=utf-8');
+    header('Content-Disposition: attachment; filename="enrolled_from_link_list.xls"');
+    header('Pragma: no-cache');
+    header('Expires: 0');
+
+    // Print column headings
+    echo "Sr.\tStudent\tEmail\tChallan No\tEnrollments\tReferral\tPaid Challan\tProfit\n";
+
+    $srno = 0;
+
+    // Make sure $rowslist is already defined earlier using your existing query
+    foreach ($rowslist as $row) {
+        $srno++;
+        $referral = ($row['id_org'] == $_SESSION['userlogininfo']['LOGINORGANIZATIONID'] ? 'Self' : $row['org_name']);
+
+        // Clean each cell to avoid breaking formatting
+        $email = preg_replace("/\t|\n|\r/", '', $row['adm_email']);
+        $fullname = preg_replace("/\t|\n|\r/", '', $row['adm_fullname']);
+        $challan_no = preg_replace("/\t|\n|\r/", '', $row['challan_no']);
+        $paid_amount = preg_replace("/\t|\n|\r/", '', $row['currency_code'].' '.$row['paid_amount']);
+        $ref = preg_replace("/\t|\n|\r/", '', $referral);
+        $profit = preg_replace("/\t|\n|\r/", '', $row['currency_code'].' '.(($row['paid_amount']/100)*$row['org_profit_percentage']));
+
+        // Print the row
+        echo "{$srno}\t{$fullname}\t{$email}\t{$challan_no}\t{$countEnroll}\t{$ref}\t{$paid_amount}\t{$profit}\n";
+    }
+
+    exit;
+}
 ?>

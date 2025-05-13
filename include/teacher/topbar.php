@@ -201,7 +201,42 @@ echo'
                             </div>
                         </div>
                     </div>
-                </div>';
+                </div>
+                <div class="dropdown topbar-head-dropdown ms-1 header-item">
+                    <button type="button" class="btn btn-icon btn-topbar btn-ghost-secondary rounded-circle" id="page-header-notifications-dropdown" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <i class="bx bxs-message-dots fs-22"></i>
+                        <span id="teacher-not-btn" class="position-absolute topbar-badge fs-10 translate-middle badge rounded-pill bg-danger">'.(!empty($countNot) ? $countNot : 0).'<span class="visually-hidden">unread messages</span></span>
+                    </button>
+                    <div class="dropdown-menu dropdown-menu-lg dropdown-menu-end p-0" aria-labelledby="page-header-notifications-dropdown">
+                        <div class="dropdown-head bg-primary bg-pattern rounded-top">
+                            <div class="p-3">
+                                <div class="row align-items-center">
+                                    <div class="col">
+                                        <h6 class="m-0 fs-16 fw-semibold text-white"> Messages </h6>
+                                    </div>
+                                    <div class="col-auto dropdown-tabs">
+                                        <span id="teacher-total-unread-badge" class="badge badge-soft-light fs-13"> '.(!empty($countNot) ? $countNot : 0).' New</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div data-simplebar style="max-height: 300px;">
+                            <div id="teacher-unread-course-messages"></div>
+                        </div>
+
+                        <div class="tab-content" id="notificationItemsTabContent">
+                            <div class="tab-pane fade p-4" id="alerts-tab" role="tabpanel" aria-labelledby="alerts-tab">
+                                <div class="w-25 w-sm-50 pt-3 mx-auto">
+                                    <img src="assets/images/svg/bell.svg" class="img-fluid" alt="user-pic">
+                                </div>
+                                <div class="text-center pb-5 mt-2">
+                                    <h6 class="fs-18 fw-semibold lh-base">Hey! You have no any notifications </h6>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                ';
                 echo'
                 <div class="dropdown ms-sm-3 header-item topbar-user">
                     <button type="button" class="btn" id="page-header-user-dropdown" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">

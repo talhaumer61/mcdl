@@ -43,14 +43,16 @@ echo'
             if ($COURSES || $DEGREE || $MASTER_TRACK) {
                 echo'
                 <div class="flex-shrink-0">
-                    <button class="btn btn-danger btn-sm" onclick="printSection(\'landscape\', \''.$reports[LMS_VIEW].'\')"><i class="ri-add-circle-line align-bottom me-1"></i>Print</button>
-                    <button class="btn btn-success btn-sm"><i class="ri-add-circle-line align-bottom me-1"></i>Excel</button>
+                    <button class="btn btn-danger btn-sm" onclick="print_report(\'printResult\')"><i class="ri-add-circle-line align-bottom me-1"></i>Print</button>
+                    <button id="export_button" class="btn btn-success btn-sm"><i class="ri-add-circle-line align-bottom me-1"></i>Excel</button>
                 </div>';
             }
             echo'
         </div>
     </div>
-    <div class="card-body" id="printableSection">';
+    <div class="card-body" id="printResult">
+        <div id="header" style="display:none;">'.$reports[LMS_VIEW].' List</div>
+    ';
         if ($COURSES || $DEGREE || $MASTER_TRACK) {
             echo'
             <table class="table mb-0">

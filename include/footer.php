@@ -242,3 +242,81 @@ echo'
 		html_table_to_excel('xlsx');
 	});
 </script>
+
+<!-- AJAX TO LOAD UNREAD MESSAGES -->
+<script>
+    const userType = "<?php echo $_SESSION['userlogininfo']['LOGINAFOR']; ?>";
+    const emplyID = "<?php echo $_SESSION['userlogininfo']['EMPLYID']; ?>";
+    function loadUnreadCourseMessages() {
+        $.ajax({
+            url: 'include/ajax/get_unread_courses.php',
+            method: 'GET',
+            data: { user_type: userType, emplyID: emplyID  },
+            dataType: 'json',
+            success: function(response) {
+                console.log(response);
+                if(userType == 1){
+                    var container = $('#unread-course-messages');
+                }else{
+                    var container = $('#teacher-unread-course-messages');
+                }
+                container.empty(); // Clear previous content
+                let totalUnread = 0;
+
+                if (response==null || response.length === 0) {
+                    container.append(`
+                        <div class="p-4">
+                            <div class="w-25 w-sm-50 pt-3 mx-auto">
+                                <img src="assets/images/svg/bell.svg" class="img-fluid" alt="user-pic">
+                            </div>
+                            <div class="text-center pb-5 mt-2">
+                                <h6 class="fs-18 fw-semibold lh-base">Hey! You have no Messages </h6>
+                            </div>
+                        </div>
+                    `);
+                }
+                else {
+                    response.forEach(item => {
+                        totalUnread += parseInt(item.unread_count, 10);
+
+                        container.append(`
+                            <div class="text-reset notification-item d-block dropdown-item position-relative">
+                                <div class="d-flex align-items-start">
+                                    <div class="avatar-xs me-3 position-relative">
+                                        <span class="avatar-title bg-soft-danger text-danger rounded-circle fs-16">
+                                            <i class="bx bx-message-square-dots"></i>
+                                            <span class="position-absolute topbar-badge fs-10 translate-middle badge rounded-pill bg-danger">
+                                                ${item.unread_count}
+                                                <span class="visually-hidden">unread messages</span>
+                                            </span>
+                                        </span>
+                                    </div>
+                                    <div class="flex-1">
+                                        <a href="courses.php?edit&id_type=2&id=${item.id_curs}&tab=manage_course&view=question_answers" class="stretched-link">
+                                            <h6 class="mt-0 mb-1 fs-13 lh-base">
+                                                <b>${item.curs_name}</b>
+                                            </h6>
+                                            <p class="mb-0 fs-11 text-muted">
+                                                You have <span class="text-success fw-semibold">${item.unread_count}</span> unread message(s)
+                                            </p>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        `);
+                    });
+                }
+                userType ==1?$('#total-unread-badge').text(`${totalUnread} New`):$('#teacher-total-unread-badge').text(`${totalUnread} New`);
+                userType ==1?$('#not-btn').text(`${totalUnread}`):$('#teacher-not-btn').text(`${totalUnread}`);
+            },
+            error: function(xhr, status, error) {
+                console.error('Error fetching unread courses:', error);
+            }
+        });
+    }
+
+    $(document).ready(function () {
+        loadUnreadCourseMessages();
+        setInterval(loadUnreadCourseMessages, 10000); // Reload every 10 seconds
+    });
+</script>
