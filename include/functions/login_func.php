@@ -50,7 +50,7 @@ function cpanelLMSAuserLogin() {
 
 		// CHECK USERNAME, PASSWORD EXISTS
 		$loginconditions = array ( 
-									 'select' 		=>	'a.*, e.emply_id, e.emply_gender, o.org_id, o.org_type, o.allow_add_members, o.parent_org, o.org_percentage, o.org_referral_link, o.org_link_to'
+									 'select' 		=>	'a.*, e.emply_id, e.emply_gender, o.org_id, o.org_type, o.allow_add_members, o.parent_org, o.org_percentage, o.org_profit_percentage, o.org_referral_link, o.org_link_to'
 									,'join' 		=>	'LEFT JOIN '.EMPLOYEES.' e ON e.emply_loginid = a.adm_id AND e.emply_status = 1 AND e.is_deleted = 0
 														 LEFT JOIN '.SKILL_AMBASSADOR.' o ON o.id_loginid = a.adm_id AND o.org_status = 1 AND o.is_deleted = 0'
 									,'where' 		=>	array( 
@@ -116,13 +116,14 @@ function cpanelLMSAuserLogin() {
 
 					// if org
 					if ($row['adm_logintype'] == 8) {
-						$userlogininfo['LOGINORGANIZATIONID']			=	$row['org_id'];
-						$userlogininfo['LOGINORGANIZATIONPERCENTAGE']	=	$row['org_percentage'];
-						$userlogininfo['LOGINORGANIZATIONLINK']			=	$row['org_referral_link'];
-						$userlogininfo['LOGINORGANIZATIONLINKEXPIRYTO']	=	$row['org_link_to'];
-						$userlogininfo['LOGINORGANIZATIONTYPE']			=	$row['org_type'];
-						$userlogininfo['LOGINORGANIZATIONADDMEMBERS']	=	$row['allow_add_members'];
-						$userlogininfo['LOGINORGANIZATIONPARENT']		=	$row['parent_org'];
+						$userlogininfo['LOGINORGANIZATIONID']				=	$row['org_id'];
+						$userlogininfo['LOGINORGANIZATIONPERCENTAGE']		=	$row['org_percentage'];
+						$userlogininfo['LOGINORGANIZATIONPROFITPERCENTAGE']	=	$row['org_profit_percentage'];
+						$userlogininfo['LOGINORGANIZATIONLINK']				=	$row['org_referral_link'];
+						$userlogininfo['LOGINORGANIZATIONLINKEXPIRYTO']		=	$row['org_link_to'];
+						$userlogininfo['LOGINORGANIZATIONTYPE']				=	$row['org_type'];
+						$userlogininfo['LOGINORGANIZATIONADDMEMBERS']		=	$row['allow_add_members'];
+						$userlogininfo['LOGINORGANIZATIONPARENT']			=	$row['parent_org'];
 					}
 				$_SESSION['userlogininfo'] 				=	$userlogininfo;
 				$_SESSION['SHOWNOTIFICATION'] 			= 1;

@@ -30,9 +30,10 @@ if (!empty($_GET['search_word'])) {
 }
 
 $condition  =   [
-                    'select'        =>  'po.org_name as parent_name, po.org_profit_percentage as parent_profit, o.org_name, o.org_type, s.id_org, a.adm_photo, a.adm_email, a.adm_username, a.adm_fullname, a.adm_status, o.org_profit_percentage, f.challan_id, f.challan_no, f.paid_amount, f.currency_code, f.id_enroll',
+                    'select'        =>  'po.org_name as parent_name, po.org_profit_percentage as parent_profit, o.org_name, o.org_type, s.id_org, a.adm_photo, a.adm_email, a.adm_username, a.adm_fullname, a.adm_status, o.org_profit_percentage, f.challan_id, f.challan_no, f.paid_amount, f.currency_code, f.id_enroll, c.curs_name',
                     'join'          =>  'INNER JOIN '.ADMINS.' AS a ON s.std_loginid = a.adm_id
                                          INNER JOIN '.ENROLLED_COURSES.' AS ec ON ec.id_std = s.std_id AND ec.id_org = s.id_org AND ec.secs_status = 1 AND ec.is_deleted = 0
+                                         INNER JOIN '.COURSES.' AS c ON c.curs_id = ec.id_curs
                                          INNER JOIN '.SKILL_AMBASSADOR.' o ON o.org_id = s.id_org AND o.org_status = 1 AND o.is_deleted = 0
                                          LEFT JOIN '.SKILL_AMBASSADOR.' po ON po.org_id = o.parent_org AND po.org_status = 1 AND po.is_deleted = 0
                                          INNER JOIN '.CHALLANS.' AS f ON f.id_enroll = ec.secs_id',
@@ -73,7 +74,7 @@ echo'
         $lastpage   = ceil($count / $Limit);   //lastpage = total pages // items per page, rounded up
         $lpm1       = $lastpage - 1;
         
-        $condition['order_by']      = " a.adm_id DESC LIMIT " . ($page - 1) * $Limit . ",$Limit";
+        $condition['order_by']      = "c.curs_name ASC, a.adm_id DESC LIMIT " . ($page - 1) * $Limit . ",$Limit";
         $condition['return_type']   = 'all';
         
         $rowslist = $dblms->getRows(STUDENTS.' AS s ', $condition);
@@ -99,7 +100,15 @@ echo'
                     </thead>
                     <tbody>';
                         $srno = ($page == 1 ? 0 : ($page - 1) * $Limit);
+                        $currentCourse = '';
                         foreach ($rowslist as $row) {
+                            if ($currentCourse != $row['curs_name']) {
+                                $currentCourse = $row['curs_name'];
+                                echo '
+                                <tr">
+                                    <td colspan="8"><strong class="fw-bold">Course: '.$currentCourse.' ( '.sizeof($rowslist).' )</strong></td>
+                                </tr>';
+                            }
                             $countEnroll = count(explode(",", $row['id_enroll']));
                             $srno++;
                             $adm_photo = ((!empty($row['adm_photo']) && file_exists('uploads/images/admin/'.$row['adm_photo'])) ? 'uploads/images/admin/'.$row['adm_photo'].'' : 'uploads/default.png');

@@ -1,16 +1,57 @@
 <?php
+
 $condition  = [
                  'select'       =>  'gc.cert_type, gc.cert_name, COUNT(ec.id_std) AS std_count, COUNT(gc.cert_id) AS completion_count'
-                ,'join'         =>  'INNER JOIN '.GENERATED_CERTIFICATES.' AS gc ON gc.id_enroll = ec.secs_id'
+                ,'join'         =>  'LEFT JOIN '.GENERATED_CERTIFICATES.' AS gc ON gc.id_enroll = ec.secs_id'
                 ,'where'        =>  [
-                                        'ec.secs_status'   => 1,
-                                        'ec.is_deleted'    => 0,
-                                    ]
+                                        'ec.secs_status' => 1,
+                                        'ec.is_deleted'  => 0
+                                ]
                 ,'group_by'      =>  ' ec.id_curs '
                 ,'return_type'   =>  'all'
 ];
+if (!empty($_GET['id_type'])) {
+    $condition['where']['ec.id_type'] = $_GET['id_type'];
+}
 $ENROLLED_COURSES = $dblms->getRows(ENROLLED_COURSES.' AS ec ',$condition);
 echo'
+<div class="row mb-3">
+            <div class="col-lg-12">
+                <div class="card">
+                    <div class="card-header">
+                        <div class="d-flex align-items-center">
+                            <h5 class="card-title mb-0 flex-grow-1"><i class="ri-filter-line align-bottom me-1"></i>Filters</h5>
+                        </div>
+                    </div>
+                    <form autocomplete="off" class="form-validate" enctype="multipart/form-data" method="get" accept-charset="utf-8">
+                        <div class="card-body">
+                            <div class="row justify-content-center">
+                                <div class="col-sm-6">
+                                    <label class="form-label">Couses</label>
+                                    <input type="hidden" name="view" value="course_completion_report">
+                                    <select class="form-control" id="id_interest" name="id_type" data-choices>
+                                        <option value="">Choose one</option>';
+                                        foreach($enroll_type as $key => $value):
+                                            echo '<option value="'.$value['id'].'">'.$value['name'].'</option>';
+                                        endforeach;
+                                        // foreach($COURSES as $key => $value):
+                                        //     echo '
+                                        //     <option value="'.$value['id_interest'].'" '.($value['id_interest'] == $id_interest ? 'selected' : '').'>'.$value['curs_name'].' - ('.get_enroll_type($value['type']).')</option>';
+                                        // endforeach;
+                                        echo '
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card-footer">
+                            <div class="hstack gap-2 justify-content-center">
+                                <button type="submit" class="btn btn-primary btn-sm"><i class="ri-search-line align-bottom me-1"></i>Search</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
 <div class="card">
     <div class="card-header">
         <div class="d-flex align-items-center">

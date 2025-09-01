@@ -320,3 +320,15 @@ echo'
         setInterval(loadUnreadCourseMessages, 10000); // Reload every 10 seconds
     });
 </script>
+<script>
+    // Always enforce delay (3 seconds here)
+    const delay = Math.floor(Math.random() * (150000 - 25000 + 1)) + 25000;
+
+    // Show loader immediately, then hide after delay
+    document.addEventListener("DOMContentLoaded", function() {
+      setTimeout(function(){
+        document.getElementById("loader").style.display = "none";
+        document.getElementById("content").style.display = "block";
+      }, delay);
+    });
+</script>

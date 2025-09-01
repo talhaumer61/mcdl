@@ -1,62 +1,91 @@
 <?php
-$revenueYears = date("Y");
+$revenueYears = isset($_GET['year']) ? intval($_GET['year']) : date("Y");
 $condition  = [
-                 'select'       =>  'SUM(total_amount) AS total_amount, SUM(paid_amount) AS paid_amount'
-                ,'where'        =>  [
-                                        'status'        => 1,
-                                        'is_deleted'    => 0,
-                                    ]
-                ,'search_by'    =>  ' AND paid_date LIKE "%'.$revenueYears.'%" '
-                ,'return_type'  =>  'single'
+    'select'       =>  'SUM(total_amount) AS total_amount, SUM(paid_amount) AS paid_amount',
+    'where'        =>  [
+        'status'        => 1,
+        'is_deleted'    => 0,
+    ],
+    'search_by'    =>  ' AND paid_date LIKE "%'.$revenueYears.'%" ',
+    'return_type'  =>  'single'
 ];
 $CHALLANS = $dblms->getRows(CHALLANS,$condition, $sql);
-echo' 
-<div class="row mb-3">
+
+$currentMonth = date("Y-m");
+$monthCondition  = [
+    'select'       =>  'SUM(total_amount) AS total_amount',
+    'where'        =>  [
+        'status'        => 1,
+        'is_deleted'    => 0,
+    ],
+    'search_by'    =>  ' AND paid_date LIKE "%' . $currentMonth . '%" ',
+    'return_type'  =>  'single'
+];
+$MONTH_CHALLANS = $dblms->getRows(CHALLANS, $monthCondition, $sql);
+
+// $conditionByType = [
+//     'select'        => 'ec.id_type, SUM(c.paid_amount) AS total_paid',
+//     'join'          => 'INNER JOIN '.ENROLLED_COURSES.' ec ON ec.secs_id = c.id_enroll',
+//     'where'         => [
+//         'c.status'     => 1,
+//         'c.is_deleted' => 0,
+//     ],
+//     'search_by'     => ' AND c.paid_date LIKE "%' . $revenueYears . '%" ',
+//     'group_by'      => 'ec.id_type',
+//     'return_type'   => 'all'
+// ];
+// $TYPE_TOTALS = $dblms->getRows(CHALLANS.' c' , $conditionByType);
+
+echo '<div class="row mb-3">
     <div class="col">
         <div class="card card-height-100">
             <div class="card-header border-0 align-items-center d-flex">
-                <h4 class="card-title mb-0 flex-grow-1">Revenue</h4>
-                <!--
-                <div>
-                    <button type="button" class="btn btn-soft-secondary btn-sm">
-                        ALL
-                    </button>
-                    <button type="button" class="btn btn-soft-secondary btn-sm">
-                        1M
-                    </button>
-                    <button type="button" class="btn btn-soft-secondary btn-sm">
-                        6M
-                    </button>
-                    <button type="button" class="btn btn-soft-primary btn-sm">
-                        1Y
-                    </button>
+                <h4 class="card-title mb-0 flex-grow-1">Revenue - '.$revenueYears.'</h4>
+                <div class="flex-shrink-0">
+                    <div class="dropdown card-header-dropdown">
+                        <a class="text-reset dropdown-btn" href="#" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <span class="fw-semibold text-uppercase fs-12">Sort by: </span><span class="text-muted">Year <i class="mdi mdi-chevron-down ms-1"></i></span>
+                        </a>
+                        <div class="dropdown-menu dropdown-menu-end">';
+                            for ($year = date('Y') - 3; $year <= date('Y'); $year++) {
+                                echo '<a class="dropdown-item" href="?year='.$year.'">'.$year.'</a>';
+                            }
+                        echo '</div>
+                    </div>
                 </div>
-                -->
             </div>
-            <div class="card-header p-0 border-0 bg-soft-light">
-                <div class="row g-0 text-center">
-                    <div class="col-6 col-sm-4">
+            <div class="card-header p-0 border-0 bg-soft-light">';
+            /*
+            echo'
+                <div class="row g-0 text-center">';
+                foreach ($TYPE_TOTALS as $row) {
+                    echo '<div class="col-6 col-sm-6">
                         <div class="p-3 border border-dashed border-start-0">
                             <h5 class="mb-1">
-                                <span class="counter-value" data-target="'.intval($CHALLANS['total_amount']).'">0</span>
+                                <span class="counter-value" data-target="'.intval($row['total_paid']).'">0</span>
                             </h5>
-                            <p class="text-muted mb-0">Total Revenue</p>
+                            <p class="text-muted mb-0">'.get_enroll_type($row['id_type']).'</p>
+                        </div>
+                    </div>';
+                }
+                echo '</div>';
+            */
+                echo'
+                <div class="row g-0 text-center">
+                    <div class="col-6 col-sm-6">
+                        <div class="p-3 border border-dashed border-start-0">
+                            <h5 class="mb-1">
+                                <span class="counter-value" data-target="'.intval($MONTH_CHALLANS['total_amount']).'">0</span>
+                            </h5>
+                            <p class="text-muted mb-0">Current Month Total</p>
                         </div>
                     </div>
-                    <div class="col-6 col-sm-4">
-                        <div class="p-3 border border-dashed border-start-0">
+                    <div class="col-6 col-sm-6">
+                        <div class="p-3 border border-dashed border-start-0 border-end-0">
                             <h5 class="mb-1">
                                 <span class="counter-value" data-target="'.intval($CHALLANS['paid_amount']).'">0</span>
                             </h5>
-                            <p class="text-muted mb-0">Total Profit</p>
-                        </div>
-                    </div>
-                    <div class="col-6 col-sm-4">
-                        <div class="p-3 border border-dashed border-start-0 border-end-0">
-                            <h5 class="mb-1">
-                                <span class="counter-value" data-target="'.intval($CHALLANS['paid_amount'] * 100 / $CHALLANS['total_amount']).'">0</span>%
-                            </h5>
-                            <p class="text-muted mb-0">Avg. Profit Rate</p>
+                            <p class="text-muted mb-0">Current Year Total</p>
                         </div>
                     </div>
                 </div>
@@ -65,109 +94,93 @@ echo'
                 <div>
                     <div id="revenue_matrics" data-colors=\'["--vz-success", "--vz-gray-300", "--vz-warning", "--vz-danger"]\' class="apex-charts" dir="ltr"></div>
                 </div>
-                <script>                
+                <script>
                     var columnoptions, chartAudienceColumnChartsColors = getChartColorsArray("revenue_matrics");
                     chartAudienceColumnChartsColors && (columnoptions = {
                         series: [
                             {
-                                name: "'.($revenueYears-4).'",
+                                name: "Degree",
                                 data: [';
-                                    for ($i=1;$i<=12;$i++) { 
+                                    for ($i=1;$i<=12;$i++) {
+                                        $month = ($i<=9 ? '0' : '') . $i;
                                         $condition  = [
-                                                         'select'       =>  'SUM(paid_amount) AS paid_amount'
-                                                        ,'where'        =>  [
-                                                                                'status'        => 1,
-                                                                                'is_deleted'    => 0,
-                                                                            ]
-                                                        ,'search_by'    =>  ' AND paid_date LIKE "%'.($revenueYears-4).'%" AND paid_date LIKE "%'.($revenueYears-4).'-'.($i<=10?'0':'').''.$i.'%" '
-                                                        ,'return_type'  =>  'single'
+                                            'select'       =>  'SUM(c.paid_amount) AS total',
+                                            'join'         =>  'INNER JOIN '.ENROLLED_COURSES.' ec ON ec.secs_id = c.id_enroll',
+                                            'where'        =>  [
+                                                'c.status'     => 1,
+                                                'c.is_deleted' => 0,
+                                                'ec.id_type'   => 1
+                                            ],
+                                            'search_by'    =>  ' AND c.paid_date LIKE "'.$revenueYears.'-'.$month.'%" ',
+                                            'return_type'  =>  'single'
                                         ];
-                                        $CHALLANS = $dblms->getRows(CHALLANS,$condition);
-                                        echo'
-                                        '.intval($CHALLANS['paid_amount']).',';
+                                        $data = $dblms->getRows(CHALLANS.' c', $condition);
+                                        echo intval($data['total']).',';
                                     }
-                                    echo'
-                                ]
+                                    echo ']
                             },
                             {
-                                name: "'.($revenueYears-3).'",
+                                name: "Mater Track",
                                 data: [';
-                                    for ($i=1;$i<=12;$i++) { 
+                                    for ($i=1;$i<=12;$i++) {
+                                        $month = ($i<=9 ? '0' : '') . $i;
                                         $condition  = [
-                                                         'select'       =>  'SUM(paid_amount) AS paid_amount'
-                                                        ,'where'        =>  [
-                                                                                'status'        => 1,
-                                                                                'is_deleted'    => 0,
-                                                                            ]
-                                                        ,'search_by'    =>  ' AND paid_date LIKE "%'.($revenueYears-3).'%" AND paid_date LIKE "%'.($revenueYears-3).'-'.($i<=10?'0':'').''.$i.'%" '
-                                                        ,'return_type'  =>  'single'
+                                            'select'       =>  'SUM(c.paid_amount) AS total',
+                                            'join'         =>  'INNER JOIN '.ENROLLED_COURSES.' ec ON ec.secs_id = c.id_enroll',
+                                            'where'        =>  [
+                                                'c.status'     => 1,
+                                                'c.is_deleted' => 0,
+                                                'ec.id_type'   => 2
+                                            ],
+                                            'search_by'    =>  ' AND c.paid_date LIKE "'.$revenueYears.'-'.$month.'%" ',
+                                            'return_type'  =>  'single'
                                         ];
-                                        $CHALLANS = $dblms->getRows(CHALLANS,$condition);
-                                        echo'
-                                        '.intval($CHALLANS['paid_amount']).',';
+                                        $data = $dblms->getRows(CHALLANS.' c', $condition);
+                                        echo intval($data['total']).',';
                                     }
-                                    echo'
-                                ]
+                                    echo ']
                             },
                             {
-                                name: "'.($revenueYears-2).'",
+                                name: "Course",
                                 data: [';
-                                    for ($i=1;$i<=12;$i++) { 
+                                    for ($i=1;$i<=12;$i++) {
+                                        $month = ($i<=9 ? '0' : '') . $i;
                                         $condition  = [
-                                                         'select'       =>  'SUM(paid_amount) AS paid_amount'
-                                                        ,'where'        =>  [
-                                                                                'status'        => 1,
-                                                                                'is_deleted'    => 0,
-                                                                            ]
-                                                        ,'search_by'    =>  ' AND paid_date LIKE "%'.($revenueYears-2).'%" AND paid_date LIKE "%'.($revenueYears-2).'-'.($i<=10?'0':'').''.$i.'%" '
-                                                        ,'return_type'  =>  'single'
+                                            'select'       =>  'SUM(c.paid_amount) AS total',
+                                            'join'         =>  'INNER JOIN '.ENROLLED_COURSES.' ec ON ec.secs_id = c.id_enroll',
+                                            'where'        =>  [
+                                                'c.status'     => 1,
+                                                'c.is_deleted' => 0,
+                                                'ec.id_type'   => 3
+                                            ],
+                                            'search_by'    =>  ' AND c.paid_date LIKE "'.$revenueYears.'-'.$month.'%" ',
+                                            'return_type'  =>  'single'
                                         ];
-                                        $CHALLANS = $dblms->getRows(CHALLANS,$condition);
-                                        echo'
-                                        '.intval($CHALLANS['paid_amount']).',';
+                                        $data = $dblms->getRows(CHALLANS.' c', $condition);
+                                        echo intval($data['total']).',';
                                     }
-                                    echo'
-                                ]
+                                    echo ']
                             },
                             {
-                                name: "'.($revenueYears-1).'",
+                                name: "e-Training",
                                 data: [';
-                                    for ($i=1;$i<=12;$i++) { 
+                                    for ($i=1;$i<=12;$i++) {
+                                        $month = ($i<=9 ? '0' : '') . $i;
                                         $condition  = [
-                                                         'select'       =>  'SUM(paid_amount) AS paid_amount'
-                                                        ,'where'        =>  [
-                                                                                'status'        => 1,
-                                                                                'is_deleted'    => 0,
-                                                                            ]
-                                                        ,'search_by'    =>  ' AND paid_date LIKE "%'.($revenueYears-1).'%" AND paid_date LIKE "%'.($revenueYears-1).'-'.($i<=10?'0':'').''.$i.'%" '
-                                                        ,'return_type'  =>  'single'
+                                            'select'       =>  'SUM(c.paid_amount) AS total',
+                                            'join'         =>  'INNER JOIN '.ENROLLED_COURSES.' ec ON ec.secs_id = c.id_enroll',
+                                            'where'        =>  [
+                                                'c.status'     => 1,
+                                                'c.is_deleted' => 0,
+                                                'ec.id_type'   => 4
+                                            ],
+                                            'search_by'    =>  ' AND c.paid_date LIKE "'.$revenueYears.'-'.$month.'%" ',
+                                            'return_type'  =>  'single'
                                         ];
-                                        $CHALLANS = $dblms->getRows(CHALLANS,$condition);
-                                        echo'
-                                        '.intval($CHALLANS['paid_amount']).',';
+                                        $data = $dblms->getRows(CHALLANS.' c', $condition);
+                                        echo intval($data['total']).',';
                                     }
-                                    echo'
-                                ]
-                            },
-                            {
-                                name: "'.$revenueYears.'",
-                                data: [';
-                                    for ($i=1;$i<=12;$i++) { 
-                                        $condition  = [
-                                                         'select'       =>  'SUM(paid_amount) AS paid_amount'
-                                                        ,'where'        =>  [
-                                                                                'status'        => 1,
-                                                                                'is_deleted'    => 0,
-                                                                            ]
-                                                        ,'search_by'    =>  ' AND paid_date LIKE "%'.$revenueYears.'%" AND paid_date LIKE "%'.$revenueYears.'-'.($i<=10?'0':'').''.$i.'%" '
-                                                        ,'return_type'  =>  'single'
-                                        ];
-                                        $CHALLANS = $dblms->getRows(CHALLANS,$condition);
-                                        echo'
-                                        '.intval($CHALLANS['paid_amount']).',';
-                                    }
-                                    echo'
-                                ]
+                                    echo ']
                             }
                         ],
                         chart: {
