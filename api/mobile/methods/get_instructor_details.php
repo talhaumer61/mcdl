@@ -9,7 +9,7 @@ if($data_arr['method_name'] == "get_instructor_details") {
                            e.emply_phone, e.emply_email, 
                            d.designation_name, e.emply_experince,
                            COUNT(DISTINCT t.id) AS allocated_courses_count, 
-                           COUNT(DISTINCT ec.id_std) AS enroled_student_count',
+                           COUNT(DISTINCT ec.id_std) AS enrolled_student_count',
         'join'         => 'LEFT JOIN '.DESIGNATIONS.' d ON d.designation_id = e.id_designation
                            LEFT JOIN '.ALLOCATE_TEACHERS.' t ON FIND_IN_SET('.cleanvars($data_arr['instructor_id']).', t.id_teacher)
                            LEFT JOIN '.ENROLLED_COURSES.' ec ON FIND_IN_SET(t.id_curs, ec.id_curs)',
@@ -26,13 +26,8 @@ if($data_arr['method_name'] == "get_instructor_details") {
 
         // ALLOCATED COURSES
         $condition = array ( 
-            'select'       => 'c.curs_id, c.curs_name, c.curs_wise, c.duration, 
-                               c.curs_icon, c.curs_rating, c.curs_photo, c.curs_href, 
-                               cc.cat_name, c.best_seller, c.curs_type_status,
-                               COUNT(ec.secs_id) as TotalStd',
-            'join'         => 'INNER JOIN '.ALLOCATE_TEACHERS.' ct ON c.curs_id = ct.id_curs 
-                                    AND FIND_IN_SET('.$EMPLOYEES['emply_id'].', ct.id_teacher)
-                               INNER JOIN '.COURSES_CATEGORIES.' cc ON c.id_cat=cc.cat_id
+            'select'       => 'c.curs_id, c.curs_name, c.curs_wise, c.duration, c.curs_photo,  c.best_seller, c.curs_type_status, COUNT(ec.secs_id) as TotalStd',
+            'join'         => 'INNER JOIN '.ALLOCATE_TEACHERS.' ct ON c.curs_id = ct.id_curs AND FIND_IN_SET('.$EMPLOYEES['emply_id'].', ct.id_teacher)
                                LEFT JOIN '.ENROLLED_COURSES.' ec ON FIND_IN_SET(c.curs_id, ec.id_curs)',
             'where'        => array(
                                 'c.is_deleted'  => 0,
@@ -51,29 +46,16 @@ if($data_arr['method_name'] == "get_instructor_details") {
                 $photo = $file_url;
             }
 
-            $curs['id']           = intval($val['curs_id']);
-            $curs['name']         = html_entity_decode($val['curs_name']);
-            $curs['category']     = $val['cat_name'];
-            $curs['rating']       = $val['curs_rating'];
-            $curs['students']     = $val['TotalStd'];
-            $curs['duration']     = $val['duration'];
-            $curs['photo']        = $photo;
-            $curs['best_seller']  = $val['best_seller'];
+            $curs['course_id']   = intval($val['curs_id']);
+            $curs['course_name'] = html_entity_decode($val['curs_name']);
+            $curs['students']    = $val['TotalStd'];
+            $curs['duration']    = $val['duration'].' '.get_CourseWise($val['curs_wise']).($val['duration'] > 1 ? 's' : '');
+            $curs['photo']       = $photo;
+            $curs['best_seller'] = (!empty($val['best_seller']) && $val['best_seller'] != null) ? $val['best_seller'] : '0';
+		    $curs['course_type'] =   $val['curs_type_status'];
 
             array_push($allocated_courses, $curs);
         }
-
-        // EMPLOYEE EXPERIENCE
-        $condition = array ( 
-            'select'       => 'jobfield, organization, designation, date_start, date_end',
-            'where'        => array(
-                                'is_deleted'   => 0,
-                                'status'       => 1,
-                                'id_employee'  => $EMPLOYEES['emply_id']
-                             ),
-            'return_type'  => 'all'
-        ); 
-        $emp_experience = $dblms->getRows(EMPLOYEE_EXPERIENCE, $condition);
 
         // PHOTO (with gender fallback)
         $emply_photo = ($EMPLOYEES['emply_gender'] == 'Female')
@@ -81,24 +63,20 @@ if($data_arr['method_name'] == "get_instructor_details") {
             : SITE_URL.'uploads/images/default_male.jpg';
 
         if(!empty($EMPLOYEES['emply_photo'])){
-            $file_url = SITE_URL.'uploads/images/employees/'.$EMPLOYEES['emply_photo'];
-            if (check_file_exists($file_url)) {
-                $emply_photo = $file_url;
-            }
+            $emply_photo = SITE_URL.'uploads/images/employees/'.$EMPLOYEES['emply_photo'];
         }
 
         // FINAL JSON
-        $ins['id']                     = intval($EMPLOYEES['emply_id']);
-        $ins['emply_name']             = $EMPLOYEES['emply_name'];
-        $ins['designation']            = $EMPLOYEES['designation_name'];
-        $ins['phone']                  = $EMPLOYEES['emply_phone'];
-        $ins['email']                  = $EMPLOYEES['emply_email'];
-        $ins['photo']                  = $emply_photo;
-        $ins['emply_experince']        = $EMPLOYEES['emply_experince'];
-        $ins['allocated_courses_count']= $EMPLOYEES['allocated_courses_count'];
-        $ins['enroled_student_count']  = $EMPLOYEES['enroled_student_count'];
-        $ins['allocated_courses']      = $allocated_courses;
-        $ins['experience']             = $emp_experience;
+        $ins['instructor_id']           = intval($EMPLOYEES['emply_id']);
+        $ins['instructor_name']         = $EMPLOYEES['emply_name'];
+        $ins['designation']             = $EMPLOYEES['designation_name'];
+        $ins['instructor_phone']        = $EMPLOYEES['emply_phone'];
+        $ins['instructor_email']        = $EMPLOYEES['emply_email'];
+        $ins['instructor_photo']        = $emply_photo;
+        $ins['instructor_experince']    = $EMPLOYEES['emply_experince'];
+        $ins['allocated_courses_count'] = $EMPLOYEES['allocated_courses_count'];
+        $ins['enrolled_student_count']  = $EMPLOYEES['enrolled_student_count'];
+        $ins['allocated_courses']       = $allocated_courses;
     }
 
     $rowjson['instructor_detail'] = $ins;
