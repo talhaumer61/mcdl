@@ -1,0 +1,23 @@
+RewriteEngine on
+
+RewriteRule ^([a-zA-Z0-9_-]+)/([a-zA-Z0-9_-]+)$ index.php?control=$1&zone=$2
+RewriteRule ^([a-zA-Z0-9_-]+)/([a-zA-Z0-9_-]+)/$ index.php?control=$1&zone=$2
+
+RewriteRule ^([a-zA-Z0-9_-]+)/([a-zA-Z0-9_-]+)/page/(.*)/$ index.php?control=$1&zone=$2&page=$3
+RewriteRule ^([a-zA-Z0-9_-]+)/([a-zA-Z0-9_-]+)/page/(.*)$ index.php?control=$1&zone=$2&page=$3
+
+RewriteRule ^([a-zA-Z0-9_-]+)/([a-zA-Z0-9_-]+)/page/(.*)/$ index.php?control=$1&zone=$2&category=$3
+RewriteRule ^([a-zA-Z0-9_-]+)/([a-zA-Z0-9_-]+)/page/(.*)$ index.php?control=$1&zone=$2&category=$3
+
+RewriteRule ^([a-zA-Z0-9_-]+)/page/(.*)/ index.php?control=$1&page=$2
+RewriteRule ^([a-zA-Z0-9_-]+)/page/(.*) index.php?control=$1&page=$2
+
+# RewriteRule ^([a-zA-Z0-9_-]+)/wrds/([a-zA-Z0-9_-]+)/page/(.*)/ index.php?control=$1&wrds=$2&page=$3
+# RewriteRule ^([a-zA-Z0-9_-]+)/wrds/([a-zA-Z0-9_-]+)/page/(.*) index.php?control=$1&wrds=$2&page=$3
+
+RewriteRule ^([a-zA-Z0-9_-]+)$ index.php?control=$1
+RewriteRule ^([a-zA-Z0-9_-]+)/$ index.php?control=$1
+
+
+RewriteRule ^(.*)\.html$ $1.php
+RewriteRule ^index index.php
