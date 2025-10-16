@@ -202,12 +202,32 @@ if($data_arr['method_name'] == "get_course_details") {
                 }
             }
 
+            // GET DISCOUNT
+            $condition = array ( 
+                                    'select'       =>	'd.discount_id, dd.discount, dd.discount_type'
+                                    ,'join'         =>  'INNER JOIN '.DISCOUNT_DETAIL.' AS dd ON d.discount_id = dd.id_setup AND dd.id_curs = "'.$COURSE['curs_id'].'"'
+                                    ,'where'        =>	array( 
+                                                                'd.discount_status' 	=> '1' 
+                                                                ,'d.is_deleted' 	    => '0'
+                                                            )
+                                    ,'search_by'    =>  ' AND d.discount_from <= CURRENT_DATE AND d.discount_to >= CURRENT_DATE'
+                                    ,'return_type'	=>	'single'
+                                );
+            $DISCOUNT = $dblms->getRows(DISCOUNT.' AS d ', $condition);
+            $discount= array();
+            if($DISCOUNT){
+                if ($COURSE['curs_type_status'] != '1' && !empty($DISCOUNT['discount_id'])) {
+                    $discount['discount_type']  = $DISCOUNT['discount_type'];
+                    $discount['discount_value'] = $DISCOUNT['discount'];
+                }
+            }  
+
             $course = array(
                 // basic
                 'course_id'         => $COURSE['curs_id'] ?? null,
                 'course_name'       => $COURSE['curs_name'] ?? '',
-                'course_hours'      => $COURSE['curs_hours'] ?? '',
-                'modules'           => $COURSE['duration'] ?? '',
+                'course_hours'      => $COURSE['curs_hours'].' Hour'.($COURSE['curs_hours'] > 1 ? 's' : ''),
+                'course_duration'   => $COURSE['duration'].' '.get_CourseWise($COURSE['curs_wise']).($COURSE['duration'] > 1 ? 's' : ''),
                 'intro_video'       => $COURSE['curs_video'] ?? '',
                 'course_level'      => get_course_level($COURSE['id_level'] ?? 0),
                 'course_language'   => $COURSE['languages'] ?? '',
@@ -216,6 +236,9 @@ if($data_arr['method_name'] == "get_course_details") {
                 'course_faculty'    => html_entity_decode($COURSE['faculty_name']) ?? '',
                 'if_enrolled'       => $COURSE['ifEnrolled'] ?? '',
                 'if_wishlist'       => $COURSE['ifWishlist'] ?? '',
+
+                // discount
+                'discount'          => $discount ?? [],
 
                 // offering
                 'admission_offering'=> array(

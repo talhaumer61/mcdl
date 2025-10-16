@@ -2,16 +2,16 @@
 if($data_arr['method_name'] == "get_faqs") {
 		$allFaq = array();
 		$condition = array ( 
-								 'select'   	=>	' DISTINCT q.question, q.answer'
+								 'select'   	=>	' DISTINCT question, answer'
 								,'where' 		=>	array( 
-														 	 'q.status'   		=> 1
-															,'q.is_deleted'    	=> 0
+														 	 'faq_status'   		=> 1
+															,'is_deleted'    	=> 0
 													)
-								,'order_by'		=>	' RAND() LIMIT 5'
+								,'order_by'		=>	' RAND()'
 								,'return_type'	=>	'all'
 							); 
-		$COURSES_FAQS = $dblms->getRows(COURSES_FAQS.' AS q', $condition);
-		foreach ($COURSES_FAQS AS $key => $val) {
+		$FAQS = $dblms->getRows(FAQS, $condition);
+		foreach ($FAQS AS $key => $val) {
 			$faq['question']				= html_entity_decode(html_entity_decode($val['question']));
 			$faq['answer']					= html_entity_decode(html_entity_decode($val['answer']));
 

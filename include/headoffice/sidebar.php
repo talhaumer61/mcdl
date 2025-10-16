@@ -148,6 +148,11 @@ echo'
                     </a>
                 </li>
                 <li class="nav-item">
+                    <a class="nav-link menu-link" href="faqs.php">
+                        <i class="ri-cast-line"></i> <span data-key="t-faqs">Faqs</span>
+                    </a>
+                </li>
+                <li class="nav-item">
                     <a class="nav-link menu-link" href="#sidebarEmployees" data-bs-toggle="collapse" role="button" aria-expanded="false" aria-controls="sidebarEmployees">
                         <i class="ri-group-line"></i> <span data-key="t-employees">Employees</span>
                     </a>

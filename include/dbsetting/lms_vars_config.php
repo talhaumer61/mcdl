@@ -111,6 +111,7 @@ define('TEACHER_INTEREST'                   , 'cms_teacher_interest');
 define('TEACHER_INTEREST_DETAIL'            , 'cms_teacher_interest_detail');
 define('SKILL_AMBASSADOR'                   , 'cms_skill_ambassador');
 define('SA_BANK_DETAILS'                    , 'cms_skill_ambassador_bank_details');
+define('FAQS'                               , 'cms_faqs');
 
 // Variables
 $control 		= (isset($_REQUEST['control']) && $_REQUEST['control'] != '') ? $_REQUEST['control'] : '';
