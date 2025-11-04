@@ -47,6 +47,7 @@ if(isset($_POST['submit_add'])) {
 							,'emply_email'					=>	cleanvars($_POST['emply_email'])
 							,'emply_postal_address'			=>	cleanvars($_POST['emply_postal_address'])
 							,'emply_permanent_address'		=>	cleanvars($_POST['emply_permanent_address'])
+							,'emply_introduction'			=>	cleanvars($_POST['emply_introduction'])
 							,'id_campus'					=>	cleanvars($_SESSION['userlogininfo']['LOGINCAMPUS'])
 							,'id_added'						=>	cleanvars($_SESSION['userlogininfo']['LOGINIDA'])
 							,'date_added'					=>	date('Y-m-d G:i:s')
@@ -135,6 +136,7 @@ if(isset($_POST['submit_edit'])) {
 							,'emply_email'					=>	cleanvars($_POST['emply_email'])
 							,'emply_postal_address'			=>	cleanvars($_POST['emply_postal_address'])
 							,'emply_permanent_address'		=>	cleanvars($_POST['emply_permanent_address'])
+							,'emply_introduction'			=>	cleanvars($_POST['emply_introduction'])
 							,'id_modify'					=>	cleanvars($_SESSION['userlogininfo']['LOGINIDA'])
 							,'date_modify'					=>	date('Y-m-d G:i:s')
 						); 

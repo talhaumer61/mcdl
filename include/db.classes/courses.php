@@ -240,7 +240,7 @@ class courses {
                                                                   'is_deleted'   => 0
                                                                 , 'lesson_id'    => cleanvars($id)
                                                                 , 'id_campus'    => cleanvars($_SESSION['userlogininfo']['LOGINCAMPUS'])
-                                                                , 'id_teacher'   => cleanvars($_SESSION['userlogininfo']['EMPLYID'])
+                                                                // , 'id_teacher'   => cleanvars($_SESSION['userlogininfo']['EMPLYID'])
                                                          )
                                 , 'return_type' => 'single'
 							);

@@ -50,7 +50,7 @@ if ($data_arr['method_name'] == "get_dashboard") {
             'return_type' => 'count'
         );
         $total_transactions = $dblms->getRows(TRANSACTION, $con_total_transactions);
-        $dashboard_data['total_transactions'] = !empty($total_transactions) ? ''.$total_transactions.'' : 0;
+        $dashboard_data['total_transactions'] = !empty($total_transactions) ? ''.$total_transactions.'' : '0';
 
 
         // === TOTAL WISHLIST ===
@@ -61,7 +61,7 @@ if ($data_arr['method_name'] == "get_dashboard") {
             'return_type' => 'count'
         );
         $total_wishlist = $dblms->getRows(WISHLIST, $con_total_wishlist);
-        $dashboard_data['total_wishlist'] = !empty($total_wishlist) ? ''.$total_wishlist.'' : 0;
+        $dashboard_data['total_wishlist'] = !empty($total_wishlist) ? ''.$total_wishlist.'' : '0';
 
 
         // --- Fetch Enrolled Courses Details ---
@@ -73,7 +73,7 @@ if ($data_arr['method_name'] == "get_dashboard") {
                                 COUNT(DISTINCT ca.id) AS assignment_count,
                                 COUNT(DISTINCT cq.quiz_id) AS quiz_count,
                                 COUNT(DISTINCT lt.track_id) AS track_count',
-            'join'          => 'INNER JOIN ' . CHALLANS . ' ch ON FIND_IN_SET(ec.secs_id,ch.id_enroll) AND ch.is_deleted = 0
+            'join'          => 'LEFT JOIN ' . CHALLANS . ' ch ON FIND_IN_SET(ec.secs_id,ch.id_enroll) AND ch.is_deleted = 0
                                 LEFT JOIN ' . COURSES . ' c ON c.curs_id = ec.id_curs AND c.curs_status = 1 AND c.is_deleted = 0
                                 LEFT JOIN ' . MASTER_TRACK . ' mt ON mt.mas_id = ec.id_mas AND mt.mas_status = 1 AND mt.is_deleted = 0
                                 LEFT JOIN ' . ADMISSION_PROGRAMS . ' ap ON ap.id = ec.id_ad_prg
@@ -125,7 +125,7 @@ if ($data_arr['method_name'] == "get_dashboard") {
                     $Total = $row['lesson_count'] + $row['assignment_count'] + $row['quiz_count'];
                     $Obtain = $row['track_count'];
                     $percent = ($Total > 0) ? (($Obtain / $Total) * 100) : 0;
-                    $percent = ($percent >= 100) ? 100 : intval($percent);
+                    $percent = ($percent >= 100) ? 100 : $percent;
 
                    $condition = array(
                                         'select'       => 'id_type',
@@ -290,7 +290,7 @@ if ($data_arr['method_name'] == "get_dashboard") {
                         'item_type_id'          => ''.$row['id_type'].'',
                         'item_type_name'        => get_offering_type($row['id_type']),
                         'photo'                 => $photo,
-                        'progress'              => ''.$percent.'%',
+                        'progress'              => ''.number_format($percent, 2).'',
                         'certificate_available' => $is_cert_available,
                         'redirection'           => $redirection_details
                     ];

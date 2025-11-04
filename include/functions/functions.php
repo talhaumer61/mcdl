@@ -1738,8 +1738,8 @@ function get_display_audience($id = '') {
 // Function to return an array of social media links
 function getSocialMediaLinks() {
     return array(
-        'facebook'  => array('name' => 'Facebook',  'icon' => 'ri-facebook-line',  'url' => 'https://www.facebook.com/',  'color' => '#1877F2'),  // Facebook Blue
-        'instagram' => array('name' => 'Instagram', 'icon' => 'ri-instagram-line', 'url' => 'https://www.instagram.com/', 'color' => '#E1306C'),  // Instagram Pinkish
+        'facebook'  => array('name' => 'Facebook',  'icon' => 'ri-facebook-line',  'url' => 'https://www.facebook.com/muldodl/',  'color' => '#1877F2'),  // Facebook Blue
+        'instagram' => array('name' => 'Instagram', 'icon' => 'ri-instagram-line', 'url' => 'https://www.instagram.com/dodl.mul', 'color' => '#E1306C'),  // Instagram Pinkish
         'linkedin'  => array('name' => 'LinkedIn',  'icon' => 'ri-linkedin-line',  'url' => 'https://www.linkedin.com/',  'color' => '#0A66C2'),  // LinkedIn Blue
         'twitter'   => array('name' => 'Twitter',   'icon' => 'ri-twitter-line',   'url' => 'https://www.twitter.com/',   'color' => '#1DA1F2')   // Twitter Blue
     );
@@ -1759,5 +1759,23 @@ function get_social_links($id = '') {
 	}else{
 		return $sociallinks;
 	}
+}
+function get_fee_type($id = '') {
+	$list= array (
+					 '1' => 'Paid'
+					,'2' => 'Fee'
+					,'3' => 'Learn Free'
+	);
+	return ((!empty($id))?$list[$id]:$list);
+}
+function get_VerificationCode() {
+    // $characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+    $characters = '0123456789';
+    $couponCode = '';
+    for ($i = 0; $i < 4; $i++) {
+        $randomIndex = rand(0, strlen($characters) - 1);
+        $couponCode .= $characters[$randomIndex];
+    }
+    return $couponCode;
 }
 ?>

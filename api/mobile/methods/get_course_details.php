@@ -240,7 +240,7 @@ if($data_arr['method_name'] == "get_course_details") {
                 'course_department' => html_entity_decode($COURSE['dept_name']) ?? '',
                 'course_faculty'    => html_entity_decode($COURSE['faculty_name']) ?? '',
                 'if_enrolled'       => $COURSE['ifEnrolled'] ?? '',
-                'if_wishlist'       => $COURSE['ifWishlist'] ?? '',
+                'if_wishlist'       => $COURSE['ifWishlist'] ? true : false,
 
                 // discount
                 'discount_type'     =>   ($discount_type ?? "0"),

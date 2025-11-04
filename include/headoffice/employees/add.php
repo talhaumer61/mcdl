@@ -157,6 +157,10 @@ echo '
                                 echo'
                             </select>
                         </div>
+                        <div class="col-md-12 mb-2">
+                            <label class="form-label">Teacher Bio</label>
+                            <textarea class="form-control" id="ckeditor1" name="emply_introduction"></textarea>
+                        </div>
                     </div>
                     <div class="hstack gap-2 justify-content-end pt-3">
                         <a href="'.moduleName().'.php" class="btn btn-danger btn-sm"><i class="ri-close-circle-line align-bottom me-1"></i>Cancel</a>
@@ -256,8 +260,8 @@ echo '
                     </div>
                     <div class="row">
                         <div class="col mb-2">
-                            <label class="form-label">Specialization Title <span class="text-danger">*</span></label>
-                            <input type="text" name="emply_specialization" id="emply_specialization" class="form-control" required>
+                            <label class="form-label">Specialization Title</label>
+                            <input type="text" name="emply_specialization" id="emply_specialization" class="form-control">
                         </div>
                     </div>
                     <div class="hstack gap-2 justify-content-end pt-3">

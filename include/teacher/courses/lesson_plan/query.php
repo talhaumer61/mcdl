@@ -43,41 +43,42 @@ if(isset($_POST['submit_add'])) {
 			$latestID = $dblms->lastestid();
 			// Lesson Resource Query
 			foreach($_POST['file_name'] AS $key => $val) {
+				if(!empty($val)) {
+					$values = array(
+										'status'			=>	1
+										,'file_name'		=>	cleanvars($val)
+										,'url'				=>	cleanvars($_POST['resource_url'][$key])
+										,'id_curs'			=>	cleanvars(CURS_ID)
+										,'id_week'			=>	cleanvars($_POST['id_week'])
+										,'id_lesson'		=>	$latestID
+										,'id_teacher'		=>	cleanvars($_SESSION['userlogininfo']['EMPLYID'])
+										,'academic_session' =>	cleanvars($_SESSION['userlogininfo']['ACADEMICSESSION'])
+										,'id_campus'		=>	cleanvars($_SESSION['userlogininfo']['LOGINCAMPUS'])
+										,'id_added'			=>	cleanvars($_SESSION['userlogininfo']['LOGINIDA'])
+										,'date_added'		=>	date('Y-m-d G:i:s')
+					);
+					$resource_qry = $dblms->insert(COURSES_DOWNLOADS, $values);
 
-				$values = array(
-									 'status'			=>	1
-									,'file_name'		=>	cleanvars($val)
-									,'url'				=>	cleanvars($_POST['resource_url'][$key])
-									,'id_curs'			=>	cleanvars(CURS_ID)
-									,'id_week'			=>	cleanvars($_POST['id_week'])
-									,'id_lesson'		=>	$latestID
-									,'id_teacher'		=>	cleanvars($_SESSION['userlogininfo']['EMPLYID'])
-									,'academic_session' =>	cleanvars($_SESSION['userlogininfo']['ACADEMICSESSION'])
-									,'id_campus'		=>	cleanvars($_SESSION['userlogininfo']['LOGINCAMPUS'])
-									,'id_added'			=>	cleanvars($_SESSION['userlogininfo']['LOGINIDA'])
-									,'date_added'		=>	date('Y-m-d G:i:s')
-			   	);
-				$resource_qry	= $dblms->insert(COURSES_DOWNLOADS, $values);
-
-				$resourcelatestID = $dblms->lastestid();
-				// Store resource file in folder
-				if(!empty($_FILES['file']['name'][$key])) {
-					$path_parts 	= pathinfo($_FILES["file"]["name"][$key]);
-					$extension 		= strtolower($path_parts['extension']);
-					if(in_array($extension , array('jpeg','jpg', 'png', 'JPEG', 'JPG', 'PNG', 'svg', 'pdf','ppt', 'docx', 'xls', 'xlsx'))) {
-						$img_dir 		=	'uploads/files/'.LMS_VIEW.'/';
-						$fileSize 		=	formatSizeUnits($_FILES['file']['size'][$key]);
-						$fileName		=	to_seo_url(cleanvars($val)).'-'.$resourcelatestID.".".($extension);
-						$originalFile	=	$img_dir.$fileName;
-						$dataFile		=	array(
-													 'file'			=>	$fileName
-													,'file_size'	=>	$fileSize
-												);
-						$sqllmsUpdateFile = $dblms->Update(COURSES_DOWNLOADS, $dataFile, "WHERE id = '".$resourcelatestID."'");
-						unset($sqllmsUpdateFile);
-						$mode = '0644';
-						move_uploaded_file($_FILES['file']['tmp_name'][$key],$originalFile);
-						chmod ($originalFile, octdec($mode));
+					$resourcelatestID = $dblms->lastestid();
+					// Store resource file in folder
+					if(!empty($_FILES['file']['name'][$key])) {
+						$path_parts 	= pathinfo($_FILES["file"]["name"][$key]);
+						$extension 		= strtolower($path_parts['extension']);
+						if(in_array($extension , array('jpeg','jpg', 'png', 'JPEG', 'JPG', 'PNG', 'svg', 'pdf','ppt', 'docx', 'xls', 'xlsx'))) {
+							$img_dir 		=	'uploads/files/'.LMS_VIEW.'/';
+							$fileSize 		=	formatSizeUnits($_FILES['file']['size'][$key]);
+							$fileName		=	to_seo_url(cleanvars($val)).'-'.$resourcelatestID.".".($extension);
+							$originalFile	=	$img_dir.$fileName;
+							$dataFile		=	array(
+														'file'			=>	$fileName
+														,'file_size'	=>	$fileSize
+													);
+							$sqllmsUpdateFile = $dblms->Update(COURSES_DOWNLOADS, $dataFile, "WHERE id = '".$resourcelatestID."'");
+							unset($sqllmsUpdateFile);
+							$mode = '0644';
+							move_uploaded_file($_FILES['file']['tmp_name'][$key],$originalFile);
+							chmod ($originalFile, octdec($mode));
+						}
 					}
 				}
 			}
@@ -135,54 +136,58 @@ if(isset($_POST['submit_edit'])) {
 			// LATEST ID
 			$latestID = LMS_EDIT_ID;
 			// Lesson Resource Query
-			$values = array(
-								 'id_deleted'		=>	cleanvars($_SESSION['userlogininfo']['LOGINIDA'])
-								,'is_deleted'		=>	1
-								,'ip_deleted'		=>	cleanvars($ip)
-								,'date_deleted'		=>	date('Y-m-d G:i:s')
-			);   
-			$sqlDel = $dblms->Update(COURSES_DOWNLOADS , $values , "WHERE id_curs =	".cleanvars(CURS_ID)." AND id_lesson = ".$latestID." AND id NOT IN (".implode(',',$_POST['id_resource']).")");
-			$notDelResourceID = array();
-			foreach($_POST['file_name'] AS $key => $val) {
+				if(isset($_POST['id_resource'])) {
 				$values = array(
-									 'status'					=>	1
-									,'file_name'				=>	cleanvars($val)
-									,'url'						=>	cleanvars($_POST['resource_url'][$key])
-									,'id_curs'					=>	cleanvars(CURS_ID)
-									,'id_lesson'				=>	$latestID
-									,'id_teacher'				=>	cleanvars($_SESSION['userlogininfo']['EMPLYID'])
-									,'academic_session'     	=>	cleanvars($_SESSION['userlogininfo']['ACADEMICSESSION'])
-									,'id_campus'				=>	cleanvars($_SESSION['userlogininfo']['LOGINCAMPUS'])
-				);
-				if($_POST['id_resource'][$key] != ''){
-					$values['id_modify']	=	cleanvars($_SESSION['userlogininfo']['LOGINIDA']);
-					$values['date_modify']	=	date('Y-m-d G:i:s');
-					$resource_qry			=	$dblms->Update(COURSES_DOWNLOADS, $values, "WHERE id  = '".cleanvars($_POST['id_resource'][$key])."'");
-					$resourcelatestID		=	$_POST['id_resource'][$key];
-				} else {
-					$values['id_added']		=	cleanvars($_SESSION['userlogininfo']['LOGINIDA']);
-					$values['date_added']	=	date('Y-m-d G:i:s');
-					$resource_qry			=	$dblms->insert(COURSES_DOWNLOADS, $values);
-					$resourcelatestID		=	$dblms->lastestid();
-				}
-				// Store resource file in folder
-				if(!empty($_FILES['file']['name'][$key])) {
-					$path_parts 	= pathinfo($_FILES["file"]["name"][$key]);
-					$extension 		= strtolower($path_parts['extension']);
-					if(in_array($extension , array('jpeg','jpg', 'png', 'JPEG', 'JPG', 'PNG', 'svg', 'pdf','ppt', 'docx', 'xls', 'xlsx'))) {
-						$img_dir 		=	'uploads/files/'.LMS_VIEW.'/';
-						$fileSize 		=	formatSizeUnits($_FILES['file']['size'][$key]);
-						$fileName		=	to_seo_url(cleanvars($val)).'-'.$resourcelatestID.".".($extension);
-						$originalFile	=	$img_dir.$fileName;
-						$dataFile		=	array(
-													'file'			=>	$fileName
-													,'file_size'	=>	$fileSize
-												);
-						$sqllmsUpdateFile = $dblms->Update(COURSES_DOWNLOADS, $dataFile, "WHERE id = '".$resourcelatestID."'");
-						unset($sqllmsUpdateFile);
-						$mode = '0644';
-						move_uploaded_file($_FILES['file']['tmp_name'][$key],$originalFile);
-						chmod ($originalFile, octdec($mode));
+									'id_deleted'		=>	cleanvars($_SESSION['userlogininfo']['LOGINIDA'])
+									,'is_deleted'		=>	1
+									,'ip_deleted'		=>	cleanvars($ip)
+									,'date_deleted'		=>	date('Y-m-d G:i:s')
+				);   
+				$sqlDel = $dblms->Update(COURSES_DOWNLOADS , $values , "WHERE id_curs =	".cleanvars(CURS_ID)." AND id_lesson = ".$latestID." AND id NOT IN (".implode(',',$_POST['id_resource']).")");
+				$notDelResourceID = array();
+			}
+			foreach($_POST['file_name'] AS $key => $val) {
+				if(!empty($val)) {
+					$values = array(
+										'status'					=>	1
+										,'file_name'				=>	cleanvars($val)
+										,'url'						=>	cleanvars($_POST['resource_url'][$key])
+										,'id_curs'					=>	cleanvars(CURS_ID)
+										,'id_lesson'				=>	$latestID
+										,'id_teacher'				=>	cleanvars($_SESSION['userlogininfo']['EMPLYID'])
+										,'academic_session'     	=>	cleanvars($_SESSION['userlogininfo']['ACADEMICSESSION'])
+										,'id_campus'				=>	cleanvars($_SESSION['userlogininfo']['LOGINCAMPUS'])
+					);
+					if($_POST['id_resource'][$key] != ''){
+						$values['id_modify']	=	cleanvars($_SESSION['userlogininfo']['LOGINIDA']);
+						$values['date_modify']	=	date('Y-m-d G:i:s');
+						$resource_qry			=	$dblms->Update(COURSES_DOWNLOADS, $values, "WHERE id  = '".cleanvars($_POST['id_resource'][$key])."'");
+						$resourcelatestID		=	$_POST['id_resource'][$key];
+					} else {
+						$values['id_added']		=	cleanvars($_SESSION['userlogininfo']['LOGINIDA']);
+						$values['date_added']	=	date('Y-m-d G:i:s');
+						$resource_qry			=	$dblms->insert(COURSES_DOWNLOADS, $values);
+						$resourcelatestID		=	$dblms->lastestid();
+					}
+					// Store resource file in folder
+					if(!empty($_FILES['file']['name'][$key])) {
+						$path_parts 	= pathinfo($_FILES["file"]["name"][$key]);
+						$extension 		= strtolower($path_parts['extension']);
+						if(in_array($extension , array('jpeg','jpg', 'png', 'JPEG', 'JPG', 'PNG', 'svg', 'pdf','ppt', 'docx', 'xls', 'xlsx'))) {
+							$img_dir 		=	'uploads/files/'.LMS_VIEW.'/';
+							$fileSize 		=	formatSizeUnits($_FILES['file']['size'][$key]);
+							$fileName		=	to_seo_url(cleanvars($val)).'-'.$resourcelatestID.".".($extension);
+							$originalFile	=	$img_dir.$fileName;
+							$dataFile		=	array(
+														'file'			=>	$fileName
+														,'file_size'	=>	$fileSize
+													);
+							$sqllmsUpdateFile = $dblms->Update(COURSES_DOWNLOADS, $dataFile, "WHERE id = '".$resourcelatestID."'");
+							unset($sqllmsUpdateFile);
+							$mode = '0644';
+							move_uploaded_file($_FILES['file']['tmp_name'][$key],$originalFile);
+							chmod ($originalFile, octdec($mode));
+						}
 					}
 				}
 			}

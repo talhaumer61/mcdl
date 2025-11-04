@@ -150,4 +150,4 @@ echo'
     }
     
 </script>';
-include_once ('include/teacher/courses/lesson_plan/script.php');
+include_once ('script.php');
