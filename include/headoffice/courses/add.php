@@ -176,11 +176,11 @@ echo'
                             <div class="row">
                                 <div class="col">
                                     <div class="mb-2">
-                                        <label class="form-label">Squencing Category </label>
-                                        <select class="form-control" name="sequencing_category[]" data-choices data-choices-removeItem multiple >
-                                            <option value="">Choose multiple</option>';
-                                            foreach ($programsCat as $cat):
-                                                echo'<option value="'.$cat['cat_id'].'">'.$cat['cat_name'].' - '.$cat['cat_code'].'</option>';
+                                        <label class="form-label">Learning Method </label>
+                                        <select class="form-control" name="id_learning_method" data-choices required>
+                                            <option value="">Choose one</option>';
+                                            foreach (get_learning_method() as $key => $value):
+                                                echo'<option value="'.$key.'">'.$value.'</option>';
                                             endforeach;
                                             echo'
                                         </select>

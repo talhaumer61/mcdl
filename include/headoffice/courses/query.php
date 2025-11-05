@@ -17,12 +17,12 @@ if(isset($_POST['submit_add'])) {
 		$curs_credit_hours = $_POST['cur_credithours_theory'] + $_POST['cur_credithours_practical'];
 
 		// SEQUENCING
-		$array = array();
-		$sequencing_category = '';
-		foreach($_POST['sequencing_category'] as $key => $val):
-			array_push($array, $val);
-			$sequencing_category = implode(",", $array);
-		endforeach;
+		// $array = array();
+		// $sequencing_category = '';
+		// foreach($_POST['sequencing_category'] as $key => $val):
+		// 	array_push($array, $val);
+		// 	$sequencing_category = implode(",", $array);
+		// endforeach;
 
 		// WHAT YOU LEARN	
 		$what_you_learn = json_encode($_POST['what_you_learn'], JSON_UNESCAPED_UNICODE);
@@ -33,7 +33,7 @@ if(isset($_POST['submit_add'])) {
 							,'duration'						=>	cleanvars($_POST['duration'])
 							,'id_level'						=>	cleanvars($_POST['id_level'])
 							,'id_cat'						=>	implode(",",$_POST['id_cat'])
-							,'sequencing_category'			=>	cleanvars($sequencing_category)
+							,'id_learning_method'			=>	cleanvars($_POST['id_learning_method'])
 							,'id_dept'						=>	cleanvars($_POST['id_dept'])
 							,'id_faculty'					=>	cleanvars($_POST['id_faculty'])
 							,'curs_name'			  		=>	cleanvars($_POST['curs_name'])
@@ -135,12 +135,12 @@ if(isset($_POST['submit_edit'])) {
 		$curs_credit_hours = $_POST['cur_credithours_theory'] + $_POST['cur_credithours_practical'];
 
 		// SEQUENCING
-		$array = array();
-		$sequencing_category = '';
-		foreach($_POST['sequencing_category'] as $key => $val):
-			array_push($array, $val);
-			$sequencing_category = implode(",", $array);	
-		endforeach;
+		// $array = array();
+		// $sequencing_category = '';
+		// foreach($_POST['sequencing_category'] as $key => $val):
+		// 	array_push($array, $val);
+		// 	$sequencing_category = implode(",", $array);	
+		// endforeach;
 
 		// WHAT YOU LEARN
 		$what_you_learn = json_encode($_POST['what_you_learn'], JSON_UNESCAPED_UNICODE);
@@ -151,7 +151,7 @@ if(isset($_POST['submit_edit'])) {
 							,'duration'						=>	cleanvars($_POST['duration'])
 							,'id_level'						=>	cleanvars($_POST['id_level'])
 							,'id_cat'						=>	implode(",",$_POST['id_cat'])
-							,'sequencing_category'			=>	cleanvars($sequencing_category)
+							,'id_learning_method'			=>	cleanvars($_POST['id_learning_method'])
 							,'id_dept'						=>	cleanvars($_POST['id_dept'])
 							,'id_faculty'					=>	cleanvars($_POST['id_faculty'])
 							,'curs_name'					=>	cleanvars($_POST['curs_name'])

@@ -40,6 +40,13 @@ echo'
                 </div>
                 <div class="row"> 
                     <div class="col mb-2">
+                        <label class="form-label">Video (max 25 MB)</label>
+                        <input type="file" name="rev_video" id="rev_video" class="form-control" accept="video/*">
+                        <small id="videoError" class="text-danger d-none">File is too large. Maximum allowed size is 25 MB.</small>
+                    </div>
+                </div>
+                <div class="row"> 
+                    <div class="col mb-2">
                         <label class="form-label">Review <span class="text-danger">*</span></label>
                         <textarea class="form-control" rows="5" name="rev_detail" required></textarea>
                     </div> 
@@ -55,3 +62,17 @@ echo'
     </div>
 </div>';
 ?>
+<script>
+document.getElementById('rev_video').addEventListener('change', function () {
+    const file = this.files[0];
+    const errorEl = document.getElementById('videoError');
+    const maxSize = 25 * 1024 * 1024; // 25 MB in bytes
+
+    if (file && file.size > maxSize) {
+        errorEl.classList.remove('d-none');
+        this.value = ''; // clear input
+    } else {
+        errorEl.classList.add('d-none');
+    }
+});
+</script>

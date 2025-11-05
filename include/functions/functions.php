@@ -879,6 +879,7 @@ function get_course_level($id = '') {
 		return $course_level;
 	}
 }
+
 // COURSE TYPE
 function get_curs_type($id = '') {
 	$curs_type = array (
@@ -1777,5 +1778,23 @@ function get_VerificationCode() {
         $couponCode .= $characters[$randomIndex];
     }
     return $couponCode;
+}
+
+// Learning Methods
+function get_learning_method($id = '') {
+	$method_type = array (
+						 '1' => 'Hybrid Learning'
+						,'2' => 'Blended Learning'
+						,'3' => 'Self-Paced Learning'
+						,'4' => 'Instructor-Lead Training'
+						,'5' => 'On-Demand Courses'
+						,'6' => 'Workshops/Bootcamps'
+						,'7' => 'Project-Based Learning'
+					  );
+	if(!empty($id)){
+		return $method_type[$id];
+	}else{
+		return $method_type;
+	}
 }
 ?>
