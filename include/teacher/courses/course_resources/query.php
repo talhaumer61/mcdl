@@ -80,14 +80,16 @@ if(isset($_POST['submit_edit'])) {
 														//,'academic_session'	=>	cleanvars($_SESSION['userlogininfo']['ACADEMICSESSION'])
 														,'is_deleted'		=>	'0'
 													)
-							//,'search_by'	=>	" AND id !='".cleanvars(LMS_EDIT_ID)."' "
-							,'return_type'	=>	'count'
+							,'not_equal'	=>	[
+													'id'	=>	LMS_EDIT_ID
+												]
+							,'return_type'	=>	'count' 
 						);
-	if($dblms->getRows(COURSES_ASSIGNMENTS, $condition)) {
+	if($dblms->getRows(COURSES_DOWNLOADS, $condition)) {
 		sessionMsg('Error', 'Record Already Exist.', 'danger');
 		header("Location: ".moduleName().".php?".$redirection."", true, 301);
 		exit();
-	}else{
+	} else {
 		$values = array(
 							 'status'				=>	cleanvars($_POST['status'])
 							,'id_type'				=>	cleanvars($_POST['id_type'])

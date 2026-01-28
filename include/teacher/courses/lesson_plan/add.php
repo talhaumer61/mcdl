@@ -68,6 +68,8 @@ echo'
         <div class="col" id="idVideo" style="display: '.((empty($_GET['lesson_id']))? 'block': 'none').';">
             <label class="form-label">Video Code <span class="text-danger">*</span></label>
             <input class="form-control" id="lesson_video_code" name="lesson_video_code" required>
+            <label class="form-label">Video Code (Vimeo) <span class="text-danger">*</span></label>
+            <input class="form-control" id="lesson_video_code_vimeo" name="lesson_video_code_vimeo" required>
         </div>
         <div class="col mb-2">
             <label class="form-label">Topic <span class="text-danger">*</span> </label>
@@ -150,4 +152,4 @@ echo'
     }
     
 </script>';
-include_once ('include/teacher/courses/lesson_plan/script.php');
+include_once ('script.php');

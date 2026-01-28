@@ -10,7 +10,7 @@ if (!empty($_GET['search_word'])) {
 }
 
 $condition = array(
-                     'select'       =>  'lesson_id, lesson_status, id_week, id_lecture, lesson_topic'
+                     'select'       =>  'lesson_id, lesson_status, id_week, id_lecture, lesson_topic, lesson_content, lesson_video_code, lesson_video_code_vimeo'
                     ,'where'        =>  array(
                                                  'is_deleted'           =>  0
                                                 ,'id_curs'				=>  cleanvars(CURS_ID)
@@ -95,7 +95,14 @@ if ($rowslist) {
                         <td class="text-center">
                             <div class="dropdown">
                                 <button class="btn btn-soft-primary btn-sm dropdown" type="button" data-bs-toggle="dropdown" aria-expanded="false"><i class="ri-more-fill"></i></button>
-                                <ul class="dropdown-menu dropdown-menu-end" style="cursor: pointer;">
+                                <ul class="dropdown-menu dropdown-menu-end" style="cursor: pointer;">';
+                                    if ($row['lesson_video_code_vimeo'] != '') {
+                                        echo'<li><a class="dropdown-item" onclick="showAjaxModalZoom(\'include/modals/'.moduleName().'/'.LMS_VIEW.'/view_video_vimeo.php?view_id='.$row['lesson_id'].'&'.$redirection.'\');"><i class="ri-vimeo-fill align-bottom me-2 text-muted"></i> Watch Video</a></li>';
+                                    }
+                                    if ($row['lesson_video_code'] != '') {
+                                        echo'<li><a class="dropdown-item" onclick="showAjaxModalZoom(\'include/modals/'.moduleName().'/'.LMS_VIEW.'/view_video.php?view_id='.$row['lesson_id'].'&'.$redirection.'\');"><i class="ri-youtube-fill align-bottom me-2 text-muted"></i> Watch Video</a></li>';
+                                    }
+                                    echo'
                                     <li><a class="dropdown-item" onclick="showAjaxModalView(\'include/modals/'.moduleName().'/'.LMS_VIEW.'/view.php?view_id='.$row['lesson_id'].'\');" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight" aria-controls="offcanvasRight"><i class="ri-eye-fill align-bottom me-2 text-muted"></i> View</a></li>
                                     <li><a class="dropdown-item" href="?edit_id='.$row['lesson_id'].'&'.$redirection.'"><i class="ri-pencil-fill align-bottom me-2 text-muted"></i> Edit</a></li>
                                     <li><a class="dropdown-item" onclick="confirm_modal(\''.moduleName().'.php?deleteid='.$row['lesson_id'].'&'.$redirection.'\');"><i class="ri-delete-bin-fill align-bottom me-2 text-muted"></i> Delete</a></li>

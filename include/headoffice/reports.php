@@ -12,7 +12,7 @@ echo'
                         <ol class="breadcrumb m-0">
                             <li class="breadcrumb-item"><a href="javascript: void(0);">Home</a></li>
                             <li class="breadcrumb-item"><a href="javascript: void(0);">'.moduleName(false).'</a></li>
-                            <li class="breadcrumb-item"><a href="'.moduleName().'.php?view='.LMS_VIEW.'" class="text-primary">'.$reports[LMS_VIEW].'</a></li>
+                            <li class="breadcrumb-item"><a href="'.moduleName().'.php?view='.LMS_VIEW.'" class="text-primary">'.(LMS_VIEW ? $reports[LMS_VIEW] : 'list').'</a></li>
                         </ol>
                     </div>
                 </div>
@@ -30,6 +30,8 @@ echo'
                     include_once ($rootDir.'/'.LMS_VIEW.'.php');
                 } elseif (LMS_VIEW == 'quiz_report') {
                     include_once ($rootDir.'/'.LMS_VIEW.'.php');
+                } else {
+                    include_once ($rootDir.'/list.php');
                 }
                 echo'
             </div>

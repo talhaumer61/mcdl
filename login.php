@@ -1,11 +1,12 @@
 <?php 
 include "include/dbsetting/lms_vars_config.php";
+include "include/functions/functions.php";
 include "include/functions/login_func.php";
 if (isset($_COOKIE['SWITCHTOINSTRUCTOR']) && !empty($_COOKIE['SWITCHTOINSTRUCTOR'])) {
     cpanelLMSAuserLogin();
 }
 if(isset($_SESSION['userlogininfo']['LOGINIDA'])) {
-	sessionMsg("Success", "Login Successfully.", "success");
+	sessionMsg("Success", "You are already logged in.", "success");
 	header("Location: dashboard.php", true, 301);
 } else { 
     $login_id = (isset($_POST['login_id']) && $_POST['login_id'] != '') ? $_POST['login_id'] : '';	

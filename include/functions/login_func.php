@@ -110,7 +110,7 @@ function cpanelLMSAuserLogin() {
 					$userlogininfo['LOGINNAME'] 		=	$row['adm_fullname'];
 					$userlogininfo['LOGINPHOTO'] 		=	$adm_photo;
 					$userlogininfo['LOGINCAMPUS'] 		=	$row['id_campus'];
-					$userlogininfo['EMPLYID'] 			=	$row['emply_id'];
+					$userlogininfo['EMPLYID'] 			=	$row['emply_id'] ?? 0;
 					$userlogininfo['EMPLYGENDER']		=	$row['emply_gender'];
 					$userlogininfo['LOGINISTEACHER']	=	$row['is_teacher']; // 1=student, 2=teacher, 3=both
 

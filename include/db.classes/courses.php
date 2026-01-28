@@ -235,12 +235,12 @@ class courses {
 		$dblms = new dblms();
 		$conditions = array (
                                   'select'      => 'lesson_id, lesson_content, id_week, lesson_status, lesson_topic, 
-                                                    id_lecture, lesson_detail, lesson_video_code, lesson_reading_detail'
+                                                    id_lecture, lesson_detail, lesson_video_code, lesson_video_code_vimeo, lesson_reading_detail'
                                 , 'where'       => array (
                                                                   'is_deleted'   => 0
                                                                 , 'lesson_id'    => cleanvars($id)
                                                                 , 'id_campus'    => cleanvars($_SESSION['userlogininfo']['LOGINCAMPUS'])
-                                                                , 'id_teacher'   => cleanvars($_SESSION['userlogininfo']['EMPLYID'])
+                                                                // , 'id_teacher'   => cleanvars($_SESSION['userlogininfo']['EMPLYID'])
                                                          )
                                 , 'return_type' => 'single'
 							);

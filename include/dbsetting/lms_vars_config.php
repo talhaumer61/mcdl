@@ -95,6 +95,7 @@ define('QUIZ_QUESTIONS'                     , 'cms_quiz_questions');
 define('QUIZ_STUDENTS'                      , 'cms_quiz_students');
 define('QUIZ_STUDENT_DETAILS'               , 'cms_quiz_student_details');
 define('CHALLANS'                           , 'cms_challans');
+define('CHALLAN_DETAIL'                     , 'cms_challan_detail');
 define('STUDENT_EDUCATIONS'                 , 'cms_student_educations');
 define('GENERATED_CERTIFICATES'             , 'cms_generated_certificates');
 define('COURSES_WEEK_TITLE'                 , 'cms_courses_week_title');
@@ -118,6 +119,8 @@ define('SKILL_AMBASSADOR'                   , 'cms_skill_ambassador');
 define('SA_BANK_DETAILS'                    , 'cms_skill_ambassador_bank_details');
 define('SA_EDU_DETAILS'                     , 'cms_skill_ambassador_education_details');
 define('FAQS'                               , 'cms_faqs');
+define('REMINDER_MAILS_LOGS'                , 'cms_reminder_mails_logs');
+define('VERIFICATION_CODES'                 , 'cms_verification_codes');
 
 // Variables
 $control 		= (isset($_REQUEST['control']) && $_REQUEST['control'] != '') ? $_REQUEST['control'] : '';
@@ -155,4 +158,7 @@ define("COPY_RIGHTS_URL"	, "https://gptech.pk/");
 // SMTP MAIL VARS
 define('SMTP_EMAIL'         , 'info.dodl@mul.edu.pk');
 define('SMTP_TOKEN'         , 'b08a9b259dc86a5fa2ab8f409614b38dbef1768edbab1d2a7281c2c963d5b5ed');
+
+// VIMEO API TOKEN
+define('VIMEO_ACCESS_TOKEN' , 'bec244fa9ccbf338283f4ea6ef5921ee');
 ?>

@@ -43,6 +43,33 @@ if(isset($_POST['submit_add'])) {
 					chmod ($originalImage, octdec($mode));
 				}
 			}
+
+			// REV_VIDEO
+			if (!empty($_FILES['rev_video']['name'])) {
+				$path_parts = pathinfo($_FILES["rev_video"]["name"]);
+				$extension  = strtolower($path_parts['extension']);
+
+				// ✅ Allow only video formats
+				$allowed = array('mp4', 'mov', 'avi', 'mkv', 'webm');
+
+				if (in_array($extension, $allowed)) {
+					$video_dir      = 'uploads/videos/reviews/';
+					$video_fileName = to_seo_url(cleanvars($_POST['rev_name'])) . '-' . $latestID . '.' . $extension;
+					$originalVideo  = $video_dir . $video_fileName;
+
+					$dataVideo = array(
+						'rev_video' => $video_fileName,
+					);
+
+					$sqlUpdateVideo = $dblms->Update(REVIEWS, $dataVideo, "WHERE rev_id = '" . $latestID . "'");
+					unset($sqlUpdateVideo);
+
+					$mode = '0644';
+					move_uploaded_file($_FILES['rev_video']['tmp_name'], $originalVideo);
+					chmod($originalVideo, octdec($mode));
+				}
+			}
+
 			
 			sendRemark(moduleName(false).' Added', '1', ''.$latestID.'');
 			sessionMsg('Successfully', 'Record Successfully Added.', 'success');
@@ -97,6 +124,32 @@ if(isset($_POST['submit_edit'])) {
 					$mode = '0644';
 					move_uploaded_file($_FILES['rev_photo']['tmp_name'],$originalImage);
 					chmod ($originalImage, octdec($mode));
+				}
+			}
+
+			// REV_VIDEO
+			if (!empty($_FILES['rev_video']['name'])) {
+				$path_parts = pathinfo($_FILES["rev_video"]["name"]);
+				$extension  = strtolower($path_parts['extension']);
+
+				// ✅ Allow only video formats
+				$allowed = array('mp4', 'mov', 'avi', 'mkv', 'webm');
+
+				if (in_array($extension, $allowed)) {
+					$video_dir      = 'uploads/videos/reviews/';
+					$video_fileName = to_seo_url(cleanvars($_POST['rev_name'])) . '-' . $latestID . '.' . $extension;
+					$originalVideo  = $video_dir . $video_fileName;
+
+					$dataVideo = array(
+						'rev_video' => $video_fileName,
+					);
+
+					$sqlUpdateVideo = $dblms->Update(REVIEWS, $dataVideo, "WHERE rev_id = '" . $latestID . "'");
+					unset($sqlUpdateVideo);
+
+					$mode = '0644';
+					move_uploaded_file($_FILES['rev_video']['tmp_name'], $originalVideo);
+					chmod($originalVideo, octdec($mode));
 				}
 			}
 

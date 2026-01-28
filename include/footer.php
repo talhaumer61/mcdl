@@ -319,4 +319,9 @@ echo'
         loadUnreadCourseMessages();
         setInterval(loadUnreadCourseMessages, 10000); // Reload every 10 seconds
     });
+    document.addEventListener("hidden.bs.modal", function (event) {
+        if (event.target.id === "show_modal") {
+            event.target.innerHTML = ""; // Remove the iframe + all content
+        }
+    });
 </script>

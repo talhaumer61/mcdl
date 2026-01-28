@@ -25,26 +25,47 @@ if(isset($_POST['update_challan'])) {
 	if($_POST['status'] == '1'){
 		$values = array(
 							 'status'			=> 1
+							,'remarks'			=> cleanvars($_POST['remarks'])
 							,'paid_amount'		=> cleanvars($_POST['total_amount'])
 							,'paid_date'		=> date('Y-m-d')
 							,'date_modify'		=> date('Y-m-d G:i:s')
 							,'id_modify'		=> cleanvars($_SESSION['userlogininfo']['LOGINIDA'])
 						);
-		$sqllms = $dblms->Update(CHALLANS, $values , "WHERE challan_id  = '".cleanvars($_POST['challan_id'])."'");
+		$sqllms = $dblms->Update(CHALLANS, $values , " WHERE challan_id  = '".cleanvars($_POST['challan_id'])."'");
 
 		if($sqllms){
+			// receipt upload
+			if(!empty($_FILES['receipt']['name'])) {
+				$path_parts 	= pathinfo($_FILES["receipt"]["name"]);
+				$extension 		= strtolower($path_parts['extension']);
+				if(in_array($extension , array('jpeg','jpg', 'png', 'pdf'))) {
+					$img_dir 		= 'uploads/images/receipt/';
+					$img_fileName	= to_seo_url($_POST['std_name'].'-'.$_POST['id_std'].'-'.$_POST['challan_no'].'-'.$_POST['challan_id']).".".($extension);
+					$originalImage	= $img_dir.$img_fileName;
+					$dataImage = array(
+										'receipt'		=> $img_fileName, 
+										);
+					$sqllmsUpdateCNIC = $dblms->Update(CHALLANS, $dataImage, " WHERE challan_id  = '".cleanvars($_POST['challan_id'])."'");
+					unset($sqllmsUpdateCNIC);
+					$mode = '0644';
+					move_uploaded_file($_FILES['receipt']['tmp_name'],$originalImage);
+					chmod ($originalImage, octdec($mode));
+				}
+			}
+
 			$values = array(
 								 'secs_status'			=> '1'
 								,'id_modify'			=> cleanvars($_SESSION['userlogininfo']['LOGINIDA'])
 								,'date_modify'			=> date('Y-m-d G:i:s')
 							); 
-			$sqllms = $dblms->Update(ENROLLED_COURSES, $values , "WHERE secs_id IN (".cleanvars($_POST['id_enroll']).") ");
+			$sqllms = $dblms->Update(ENROLLED_COURSES, $values , " WHERE secs_id IN (".cleanvars($_POST['id_enroll']).") ");
 
 			$values = array(
 								 'trans_status'			=> 1
 								,'id_std'               => cleanvars($_POST['id_std'])
 								,'trans_no'				=> cleanvars($_POST['challan_no'])
 								,'id_enroll'			=> cleanvars($_POST['id_enroll'])
+								,'currency_code'		=> cleanvars($_POST['currency_code'])
 								,'trans_amount'         => cleanvars($_POST['total_amount'])
 								,'date'           		=> date('Y-m-d')
 								,'id_added'             => cleanvars($_SESSION['userlogininfo']['LOGINIDA'])
@@ -58,16 +79,16 @@ if(isset($_POST['update_challan'])) {
 			header("Location: ".moduleName().".php", true, 301);
 			exit();
 		}
-
 	}	
 	// REJECT
 	elseif($_POST['status'] == '3'){
 		$values = array(
 							 'status'			=> 3
+							,'remarks'			=> cleanvars($_POST['remarks'])
 							,'date_modify'		=> date('Y-m-d G:i:s')
 							,'id_modify'		=> cleanvars($_SESSION['userlogininfo']['LOGINIDA'])
 						);
-		$sqllms = $dblms->Update(CHALLANS, $values , "WHERE challan_id  = '".cleanvars($_POST['challan_id'])."'");
+		$sqllms = $dblms->Update(CHALLANS, $values , " WHERE challan_id  = '".cleanvars($_POST['challan_id'])."'");
 
 		if($sqllms){
 			$values = array(
@@ -75,7 +96,7 @@ if(isset($_POST['update_challan'])) {
 								,'id_modify'			=> cleanvars($_SESSION['userlogininfo']['LOGINIDA'])
 								,'date_modify'			=> date('Y-m-d G:i:s')
 							); 
-			$sqllms = $dblms->Update(ENROLLED_COURSES, $values , "WHERE secs_id IN (".cleanvars($_POST['id_enroll']).") ");
+			$sqllms = $dblms->Update(ENROLLED_COURSES, $values , " WHERE secs_id IN (".cleanvars($_POST['id_enroll']).") ");
 
 			// REMAKRS
 			sendRemark("Challan marked Unpaid", '2', $_POST['challan_id']);

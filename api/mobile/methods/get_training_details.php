@@ -241,7 +241,7 @@ if($data_arr['method_name'] == "get_training_details") {
                 'training_department' => html_entity_decode($COURSE['dept_name']) ?? '',
                 'training_faculty'    => html_entity_decode($COURSE['faculty_name']) ?? '',
                 'if_enrolled'         => $COURSE['ifEnrolled'] ?? '',
-                'if_wishlist'         => $COURSE['ifWishlist'] ?? '',
+                'if_wishlist'         => $COURSE['ifWishlist'] ? true : false,
                 
                 // discount
                 'discount_type'     =>   ($discount_type ?? "0"),
@@ -257,7 +257,7 @@ if($data_arr['method_name'] == "get_training_details") {
 
                 // detailed
                 'what_you_learn'    => !empty($COURSE['what_you_learn']) 
-                                        ? json_decode(html_entity_decode($COURSE['what_you_learn']), true) 
+                                        ? json_decode(html_entity_decode(html_entity_decode($COURSE['what_you_learn'])), true) 
                                         : [],
                 'training_skills'       => !empty($COURSE['curs_skills']) 
                                         ? array_map('trim', explode(',', $COURSE['curs_skills'])) 

@@ -21,7 +21,7 @@ $course_skills = $coursecls->get_skills(1);
 // TEXT EDITORS
 
 $sequencing_category = explode( ',', $curs['sequencing_category']);
-$what_you_learn = json_decode(html_entity_decode($curs['what_you_learn']), true); // JSON DECODE
+$what_you_learn = json_decode(html_entity_decode(html_entity_decode($curs['what_you_learn'])), true); // JSON DECODE
 
 $textareaFields = array(
                          'curs_about'      => array( 'id' => 'ckeditor0', 'title' => 'About'          , 'required' => '1', 'class' => 'col-md-6' )
@@ -185,11 +185,11 @@ echo'
                             <div class="row">
                                 <div class="col">
                                     <div class="mb-2">
-                                        <label class="form-label">Squencing Category</label>
-                                        <select class="form-control" data-choices name="sequencing_category[]" data-choices-removeItem multiple>
-                                            <option value="">Choose multiple</option>';
-                                            foreach ($programsCat as $cat):
-                                                echo'<option value="'.$cat['cat_id'].'" '.(in_array($cat['cat_id'], $sequencing_category) ? 'selected': '').'>'.$cat['cat_name'].' - '.$cat['cat_code'].'</option>';
+                                        <label class="form-label">Learning Method <span class="text-danger">*</span></label>
+                                        <select class="form-control" data-choices name="id_learning_method" required>
+                                            <option value="">Choose one</option>';
+                                            foreach (get_learning_method() as $key => $value):
+                                                echo'<option value="'.$key.'" '.($curs['id_learning_method'] == $key ? 'selected' : '').'>'.$value.'</option>';
                                             endforeach;
                                             echo'
                                         </select>

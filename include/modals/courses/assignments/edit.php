@@ -5,11 +5,15 @@ require_once ("../../../functions/functions.php");
 require_once ("../../../functions/login_func.php");
 $dblms = new dblms();
 
-require_once("../../../db.classes/courses.php");
-$coursecls = new courses();
-
-$result    = $coursecls->get_courseassignmentdetail(LMS_EDIT_ID);
-
+$condition = array(
+                     'select'       =>  '*'
+                    ,'where'        =>  array(
+                                                 'is_deleted'   =>	0
+                                                ,'id'           =>	cleanvars(LMS_EDIT_ID)
+                                            )
+                    ,'return_type'  =>  'single'
+                );
+$result  = $dblms->getRows(COURSES_ASSIGNMENTS, $condition);
 echo'
 <script src="assets/js/app.js"></script>
 <div class="modal-dialog modal-xl">

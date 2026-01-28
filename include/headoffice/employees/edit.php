@@ -46,7 +46,7 @@ $condition = array (
                                                 emply_phone, emply_email, emply_mobile, emply_postal_address, emply_permanent_address, emply_experince, 
                                                 emply_degreecountry, emply_passingyear, emply_qualification, emply_university, emply_specialsubject, id_dept, 
                                                 id_designation, id_type, emply_permanentvisiting, emply_joining_date, emply_religion, emply_blood, emply_gender, 
-                                                emply_marital, id_city, emply_specialization
+                                                emply_marital, id_city, emply_specialization, emply_introduction
                                             "
                         ,'where' 	    =>    array( 
                                                          'is_deleted'  => 0
@@ -175,6 +175,10 @@ echo '
                                 echo'
                             </select>
                         </div>
+                        <div class="col-md-12 mb-2">
+                            <label class="form-label">Teacher Bio</label>
+                            <textarea class="form-control" id="ckeditor1" name="emply_introduction">'.html_entity_decode($EMPLOYEES['emply_introduction']).'</textarea>
+                        </div>
                     </div>
                     <div class="hstack gap-2 justify-content-end pt-3">
                         <a href="'.moduleName().'.php" class="btn btn-danger btn-sm"><i class="ri-close-circle-line align-bottom me-1"></i>Cancel</a>
@@ -276,8 +280,8 @@ echo '
                     </div>
                     <div class="row">
                         <div class="col mb-2">
-                            <label class="form-label">Specialization Title <span class="text-danger">*</span></label>
-                            <input type="text" name="emply_specialization" id="emply_specialization" value="'.$EMPLOYEES['emply_specialization'].'" class="form-control" required>
+                            <label class="form-label">Specialization Title</label>
+                            <input type="text" name="emply_specialization" id="emply_specialization" value="'.$EMPLOYEES['emply_specialization'].'" class="form-control">
                         </div>
                     </div>
                     <div class="hstack gap-2 justify-content-end pt-3">

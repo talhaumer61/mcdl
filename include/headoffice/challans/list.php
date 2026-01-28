@@ -27,7 +27,7 @@ echo'
             <h5 class="card-title mb-0 flex-grow-1"><i class="ri-file-paper-2-fill align-bottom me-1"></i>'.moduleName(false).' List</h5>
         </div>
     </div>
-    <div class="card-body">        
+    <div class="card-body">
         <div class="row justify-content-end">
             <div class="col-3">
                 <form class="form-horizontal" id="form" enctype="multipart/form-data" method="get" autocomplete="off" accept-charset="utf-8">
@@ -84,15 +84,18 @@ echo'
                                             <ul class="dropdown-menu dropdown-menu-end" style="cursor: pointer;">
                                                 <!--<li><a class="dropdown-item text-primary" href="challan_print.php?challan_no='.$row['challan_no'].'" target="_blank"><i class="ri-printer-fill align-bottom me-2"></i> Print</a></li>-->
                                                 <li><a class="dropdown-item" onclick="showAjaxModalView(\'include/modals/challans/view.php?challan_id='.$row['challan_id'].'\');" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight" aria-controls="offcanvasRight"><i class="ri-eye-fill align-bottom me-2 text-muted"></i> View</a></li>';
+                                                if(in_array($row['status'], [1,3])){
+                                                    echo'<li><a class="dropdown-item" onclick="showAjaxModalZoom(\'include/modals/challans/remarks.php?challan_id='.$row['challan_id'].'\');"><i class="ri-file-info-fill align-bottom me-2 text-muted"></i> Remarks</a></li>';
+                                                }
                                                 if($row['status'] == '2'){
                                                     echo'<li><a class="dropdown-item" onclick="showAjaxModalZoom(\'include/modals/challans/edit.php?challan_id='.$row['challan_id'].'\');"><i class="ri-pencil-fill align-bottom me-2 text-muted"></i> Edit</a></li>';
                                                 }
-                                                /*
+                                                // pay / reject
                                                 if($row['status'] == '2'){
                                                     echo'
                                                     <li><a class="dropdown-item text-success" onclick="showAjaxModalZoom(\'include/modals/challans/update.php?challan_id='.$row['challan_id'].'&status=1\');"><i class="ri-send-plane-fill align-bottom me-2"></i> Pay Challan</a></li>
                                                     <li><a class="dropdown-item text-danger" onclick="showAjaxModalZoom(\'include/modals/challans/update.php?challan_id='.$row['challan_id'].'&status=3\');"><i class="ri-close-circle-line align-bottom me-2"></i> Reject & Close</a></li>';
-                                                }*/
+                                                }
                                                 echo'
                                                 <li><a class="dropdown-item" onclick="confirm_modal(\''.moduleName().'.php?deleteid='.$row['challan_id'].'\');"><i class="ri-delete-bin-fill align-bottom me-2 text-muted"></i> Delete</a></li>
                                             </ul>

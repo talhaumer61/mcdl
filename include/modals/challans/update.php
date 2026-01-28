@@ -34,8 +34,29 @@ echo'
             <input type="hidden" name="status" value="'.$_GET['status'].'" />
             <input type="hidden" name="total_amount" value="'.$row['total_amount'].'" />
             <input type="hidden" name="id_enroll" value="'.$row['id_enroll'].'" />
+            <input type="hidden" name="currency_code" value="'.$row['currency_code'].'" />
             <div class="modal-body">
-                <h5 class="fs-15 pt-3 pb-3">Do you realy want to Update the Challan <span class="text-'.$modal.'">'.$row['challan_no'].'</span> of student <span class="text-'.$modal.'">'.$row['std_name'].'</span> to '.$title.'.</h5>
+                <div class="row mb-2">
+                    <div class="col">
+                        <h5 class="fs-15 text-center">Do you realy want to Update the Challan <span class="text-'.$modal.'">'.$row['challan_no'].'</span> of student <span class="text-'.$modal.'">'.$row['std_name'].'</span> to '.$title.'.</h5>
+                    </div>
+                </div>';
+                if ($_GET['status'] == 1) {
+                    echo'
+                    <div class="row mb-2">
+                        <div class="col">
+                            <label>Receipt <span class="text-danger">*</span></label>
+                            <input type="file" name="receipt" accept=".jpg, .jpeg, .png, .pdf" class="form-control" data-bs-height="100"/>
+                        </div>
+                    </div>';
+                }
+                echo'
+                <div class="row mb-2">
+                    <div class="col">
+                        <label>Remarks <span class="text-danger">*</span></label>
+                        <textarea class="form-control" name="remarks"></textarea>
+                    </div>
+                </div>
             </div>
             <div class="modal-footer">
                 <div class="hstack gap-2 justify-content-end">
