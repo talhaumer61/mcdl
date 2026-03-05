@@ -1,5 +1,5 @@
 <?php
-error_reporting(0);
+// error_reporting(0);
 ob_start();
 ob_clean();
 date_default_timezone_set("Asia/Karachi");
@@ -26,7 +26,7 @@ define('__LOCATION__'           , (isset($userGeoInfo['loc'])        && !empty($
 // define('LMS_USERPASS'			, 'KSkTGFEhOD0asI#S');
 
 define('LMS_HOSTNAME'			, 'localhost');
-define('LMS_NAME'				, 'gptech_odl');
+define('LMS_NAME'				, 'gptech_dodl');
 define('LMS_USERNAME'			, 'root');
 define('LMS_USERPASS'			, '');
 

@@ -325,3 +325,29 @@ echo'
         }
     });
 </script>
+<script>
+    // GLOBAL IMAGE SIZE VALIDATION (Max 300KB - Images Only)
+    $(document).on('change', 'input[type="file"]', function () {
+
+        const maxSize = 300 * 1024; // 300 KB
+        const file = this.files[0];
+        const $input = $(this);
+
+        // Remove old error
+        $input.next('.file-size-error').remove();
+
+        if (file) {
+
+            // Check if selected file is an image
+            if (file.type.startsWith('image/')) {
+
+                if (file.size > maxSize) {
+                    $input.val('');
+                    $('<small class="text-danger file-size-error d-block mt-1">Image size must not exceed 300 KB.</small>').insertAfter($input);
+                }
+
+            }
+
+        }
+    });
+</script>
