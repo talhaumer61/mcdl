@@ -1,0 +1,141 @@
+[25-Oct-2023 11:35:23 UTC] PHP Fatal error:  Uncaught Exception: URL rejected: Malformed input to a URL function in /home/neotericschools/public_html/mcdl.mul.edu.pk/api/mobile/saplogin.php:33
+Stack trace:
+#0 {main}
+  thrown in /home/neotericschools/public_html/mcdl.mul.edu.pk/api/mobile/saplogin.php on line 33
+[25-Oct-2023 11:35:26 UTC] PHP Fatal error:  Uncaught Exception: URL rejected: Malformed input to a URL function in /home/neotericschools/public_html/mcdl.mul.edu.pk/api/mobile/saplogin.php:33
+Stack trace:
+#0 {main}
+  thrown in /home/neotericschools/public_html/mcdl.mul.edu.pk/api/mobile/saplogin.php on line 33
+[05-Mar-2024 15:11:05 UTC] PHP Warning:  include(includes/dbsetting/lms_vars_config.php): failed to open stream: No such file or directory in /home/neotericschools/public_html/mcdl.mul.edu.pk/api/mobile/index.php on line 8
+[05-Mar-2024 15:11:05 UTC] PHP Warning:  include(): Failed opening 'includes/dbsetting/lms_vars_config.php' for inclusion (include_path='.:/opt/cpanel/ea-php73/root/usr/share/pear') in /home/neotericschools/public_html/mcdl.mul.edu.pk/api/mobile/index.php on line 8
+[05-Mar-2024 15:11:05 UTC] PHP Warning:  include(includes/dbsetting/classdbconection.php): failed to open stream: No such file or directory in /home/neotericschools/public_html/mcdl.mul.edu.pk/api/mobile/index.php on line 9
+[05-Mar-2024 15:11:05 UTC] PHP Warning:  include(): Failed opening 'includes/dbsetting/classdbconection.php' for inclusion (include_path='.:/opt/cpanel/ea-php73/root/usr/share/pear') in /home/neotericschools/public_html/mcdl.mul.edu.pk/api/mobile/index.php on line 9
+[05-Mar-2024 15:11:05 UTC] PHP Warning:  include(includes/functions/functions.php): failed to open stream: No such file or directory in /home/neotericschools/public_html/mcdl.mul.edu.pk/api/mobile/index.php on line 10
+[05-Mar-2024 15:11:05 UTC] PHP Warning:  include(): Failed opening 'includes/functions/functions.php' for inclusion (include_path='.:/opt/cpanel/ea-php73/root/usr/share/pear') in /home/neotericschools/public_html/mcdl.mul.edu.pk/api/mobile/index.php on line 10
+[05-Mar-2024 15:11:05 UTC] PHP Fatal error:  Uncaught Error: Class 'dblms' not found in /home/neotericschools/public_html/mcdl.mul.edu.pk/api/mobile/index.php:11
+Stack trace:
+#0 {main}
+  thrown in /home/neotericschools/public_html/mcdl.mul.edu.pk/api/mobile/index.php on line 11
+[05-Mar-2024 15:11:15 UTC] PHP Warning:  include(includes/dbsetting/lms_vars_config.php): failed to open stream: No such file or directory in /home/neotericschools/public_html/mcdl.mul.edu.pk/api/mobile/index.php on line 8
+[05-Mar-2024 15:11:15 UTC] PHP Warning:  include(): Failed opening 'includes/dbsetting/lms_vars_config.php' for inclusion (include_path='.:/opt/cpanel/ea-php73/root/usr/share/pear') in /home/neotericschools/public_html/mcdl.mul.edu.pk/api/mobile/index.php on line 8
+[05-Mar-2024 15:11:15 UTC] PHP Warning:  include(includes/dbsetting/classdbconection.php): failed to open stream: No such file or directory in /home/neotericschools/public_html/mcdl.mul.edu.pk/api/mobile/index.php on line 9
+[05-Mar-2024 15:11:15 UTC] PHP Warning:  include(): Failed opening 'includes/dbsetting/classdbconection.php' for inclusion (include_path='.:/opt/cpanel/ea-php73/root/usr/share/pear') in /home/neotericschools/public_html/mcdl.mul.edu.pk/api/mobile/index.php on line 9
+[05-Mar-2024 15:11:15 UTC] PHP Warning:  include(includes/functions/functions.php): failed to open stream: No such file or directory in /home/neotericschools/public_html/mcdl.mul.edu.pk/api/mobile/index.php on line 10
+[05-Mar-2024 15:11:15 UTC] PHP Warning:  include(): Failed opening 'includes/functions/functions.php' for inclusion (include_path='.:/opt/cpanel/ea-php73/root/usr/share/pear') in /home/neotericschools/public_html/mcdl.mul.edu.pk/api/mobile/index.php on line 10
+[05-Mar-2024 15:11:15 UTC] PHP Fatal error:  Uncaught Error: Class 'dblms' not found in /home/neotericschools/public_html/mcdl.mul.edu.pk/api/mobile/index.php:11
+Stack trace:
+#0 {main}
+  thrown in /home/neotericschools/public_html/mcdl.mul.edu.pk/api/mobile/index.php on line 11
+[05-Mar-2024 15:11:34 UTC] PHP Warning:  include(includes/dbsetting/lms_vars_config.php): failed to open stream: No such file or directory in /home/neotericschools/public_html/mcdl.mul.edu.pk/api/mobile/index.php on line 8
+[05-Mar-2024 15:11:34 UTC] PHP Warning:  include(): Failed opening 'includes/dbsetting/lms_vars_config.php' for inclusion (include_path='.:/opt/cpanel/ea-php73/root/usr/share/pear') in /home/neotericschools/public_html/mcdl.mul.edu.pk/api/mobile/index.php on line 8
+[05-Mar-2024 15:11:34 UTC] PHP Warning:  include(includes/dbsetting/classdbconection.php): failed to open stream: No such file or directory in /home/neotericschools/public_html/mcdl.mul.edu.pk/api/mobile/index.php on line 9
+[05-Mar-2024 15:11:34 UTC] PHP Warning:  include(): Failed opening 'includes/dbsetting/classdbconection.php' for inclusion (include_path='.:/opt/cpanel/ea-php73/root/usr/share/pear') in /home/neotericschools/public_html/mcdl.mul.edu.pk/api/mobile/index.php on line 9
+[05-Mar-2024 15:11:34 UTC] PHP Warning:  include(includes/functions/functions.php): failed to open stream: No such file or directory in /home/neotericschools/public_html/mcdl.mul.edu.pk/api/mobile/index.php on line 10
+[05-Mar-2024 15:11:34 UTC] PHP Warning:  include(): Failed opening 'includes/functions/functions.php' for inclusion (include_path='.:/opt/cpanel/ea-php73/root/usr/share/pear') in /home/neotericschools/public_html/mcdl.mul.edu.pk/api/mobile/index.php on line 10
+[05-Mar-2024 15:11:34 UTC] PHP Fatal error:  Uncaught Error: Class 'dblms' not found in /home/neotericschools/public_html/mcdl.mul.edu.pk/api/mobile/index.php:11
+Stack trace:
+#0 {main}
+  thrown in /home/neotericschools/public_html/mcdl.mul.edu.pk/api/mobile/index.php on line 11
+[05-Mar-2024 15:12:19 UTC] PHP Warning:  include(includes/dbsetting/lms_vars_config.php): failed to open stream: No such file or directory in /home/neotericschools/public_html/mcdl.mul.edu.pk/api/mobile/index.php on line 8
+[05-Mar-2024 15:12:19 UTC] PHP Warning:  include(): Failed opening 'includes/dbsetting/lms_vars_config.php' for inclusion (include_path='.:/opt/cpanel/ea-php73/root/usr/share/pear') in /home/neotericschools/public_html/mcdl.mul.edu.pk/api/mobile/index.php on line 8
+[05-Mar-2024 15:12:19 UTC] PHP Warning:  include(includes/dbsetting/classdbconection.php): failed to open stream: No such file or directory in /home/neotericschools/public_html/mcdl.mul.edu.pk/api/mobile/index.php on line 9
+[05-Mar-2024 15:12:19 UTC] PHP Warning:  include(): Failed opening 'includes/dbsetting/classdbconection.php' for inclusion (include_path='.:/opt/cpanel/ea-php73/root/usr/share/pear') in /home/neotericschools/public_html/mcdl.mul.edu.pk/api/mobile/index.php on line 9
+[05-Mar-2024 15:12:19 UTC] PHP Warning:  include(includes/functions/functions.php): failed to open stream: No such file or directory in /home/neotericschools/public_html/mcdl.mul.edu.pk/api/mobile/index.php on line 10
+[05-Mar-2024 15:12:19 UTC] PHP Warning:  include(): Failed opening 'includes/functions/functions.php' for inclusion (include_path='.:/opt/cpanel/ea-php73/root/usr/share/pear') in /home/neotericschools/public_html/mcdl.mul.edu.pk/api/mobile/index.php on line 10
+[05-Mar-2024 15:12:19 UTC] PHP Fatal error:  Uncaught Error: Class 'dblms' not found in /home/neotericschools/public_html/mcdl.mul.edu.pk/api/mobile/index.php:11
+Stack trace:
+#0 {main}
+  thrown in /home/neotericschools/public_html/mcdl.mul.edu.pk/api/mobile/index.php on line 11
+[05-Mar-2024 15:12:24 UTC] PHP Warning:  include(includes/dbsetting/lms_vars_config.php): failed to open stream: No such file or directory in /home/neotericschools/public_html/mcdl.mul.edu.pk/api/mobile/index.php on line 8
+[05-Mar-2024 15:12:24 UTC] PHP Warning:  include(): Failed opening 'includes/dbsetting/lms_vars_config.php' for inclusion (include_path='.:/opt/cpanel/ea-php73/root/usr/share/pear') in /home/neotericschools/public_html/mcdl.mul.edu.pk/api/mobile/index.php on line 8
+[05-Mar-2024 15:12:24 UTC] PHP Warning:  include(includes/dbsetting/classdbconection.php): failed to open stream: No such file or directory in /home/neotericschools/public_html/mcdl.mul.edu.pk/api/mobile/index.php on line 9
+[05-Mar-2024 15:12:24 UTC] PHP Warning:  include(): Failed opening 'includes/dbsetting/classdbconection.php' for inclusion (include_path='.:/opt/cpanel/ea-php73/root/usr/share/pear') in /home/neotericschools/public_html/mcdl.mul.edu.pk/api/mobile/index.php on line 9
+[05-Mar-2024 15:12:24 UTC] PHP Warning:  include(includes/functions/functions.php): failed to open stream: No such file or directory in /home/neotericschools/public_html/mcdl.mul.edu.pk/api/mobile/index.php on line 10
+[05-Mar-2024 15:12:24 UTC] PHP Warning:  include(): Failed opening 'includes/functions/functions.php' for inclusion (include_path='.:/opt/cpanel/ea-php73/root/usr/share/pear') in /home/neotericschools/public_html/mcdl.mul.edu.pk/api/mobile/index.php on line 10
+[05-Mar-2024 15:12:24 UTC] PHP Fatal error:  Uncaught Error: Class 'dblms' not found in /home/neotericschools/public_html/mcdl.mul.edu.pk/api/mobile/index.php:11
+Stack trace:
+#0 {main}
+  thrown in /home/neotericschools/public_html/mcdl.mul.edu.pk/api/mobile/index.php on line 11
+[05-Mar-2024 15:12:30 UTC] PHP Warning:  include(includes/dbsetting/lms_vars_config.php): failed to open stream: No such file or directory in /home/neotericschools/public_html/mcdl.mul.edu.pk/api/mobile/index.php on line 8
+[05-Mar-2024 15:12:30 UTC] PHP Warning:  include(): Failed opening 'includes/dbsetting/lms_vars_config.php' for inclusion (include_path='.:/opt/cpanel/ea-php73/root/usr/share/pear') in /home/neotericschools/public_html/mcdl.mul.edu.pk/api/mobile/index.php on line 8
+[05-Mar-2024 15:12:30 UTC] PHP Warning:  include(includes/dbsetting/classdbconection.php): failed to open stream: No such file or directory in /home/neotericschools/public_html/mcdl.mul.edu.pk/api/mobile/index.php on line 9
+[05-Mar-2024 15:12:30 UTC] PHP Warning:  include(): Failed opening 'includes/dbsetting/classdbconection.php' for inclusion (include_path='.:/opt/cpanel/ea-php73/root/usr/share/pear') in /home/neotericschools/public_html/mcdl.mul.edu.pk/api/mobile/index.php on line 9
+[05-Mar-2024 15:12:30 UTC] PHP Warning:  include(includes/functions/functions.php): failed to open stream: No such file or directory in /home/neotericschools/public_html/mcdl.mul.edu.pk/api/mobile/index.php on line 10
+[05-Mar-2024 15:12:30 UTC] PHP Warning:  include(): Failed opening 'includes/functions/functions.php' for inclusion (include_path='.:/opt/cpanel/ea-php73/root/usr/share/pear') in /home/neotericschools/public_html/mcdl.mul.edu.pk/api/mobile/index.php on line 10
+[05-Mar-2024 15:12:30 UTC] PHP Fatal error:  Uncaught Error: Class 'dblms' not found in /home/neotericschools/public_html/mcdl.mul.edu.pk/api/mobile/index.php:11
+Stack trace:
+#0 {main}
+  thrown in /home/neotericschools/public_html/mcdl.mul.edu.pk/api/mobile/index.php on line 11
+[19-Mar-2024 10:09:46 UTC] PHP Parse error:  syntax error, unexpected end of file, expecting ')' in /home/neotericschools/public_html/mcdl.mul.edu.pk/api/mobile/index.php on line 1088
+[21-Aug-2025 08:47:11 UTC] PHP Warning:  include(language/app_language.php): failed to open stream: No such file or directory in /home/neotericschools/public_html/mcdl.mul.edu.pk/api/mobile/index.php on line 3
+[21-Aug-2025 08:47:11 UTC] PHP Warning:  include(): Failed opening 'language/app_language.php' for inclusion (include_path='.:/opt/cpanel/ea-php74/root/usr/share/pear') in /home/neotericschools/public_html/mcdl.mul.edu.pk/api/mobile/index.php on line 3
+[21-Aug-2025 08:47:11 UTC] PHP Warning:  include(includes/dbsetting/lms_vars_config.php): failed to open stream: No such file or directory in /home/neotericschools/public_html/mcdl.mul.edu.pk/api/mobile/index.php on line 5
+[21-Aug-2025 08:47:11 UTC] PHP Warning:  include(): Failed opening 'includes/dbsetting/lms_vars_config.php' for inclusion (include_path='.:/opt/cpanel/ea-php74/root/usr/share/pear') in /home/neotericschools/public_html/mcdl.mul.edu.pk/api/mobile/index.php on line 5
+[21-Aug-2025 08:47:11 UTC] PHP Warning:  include(includes/dbsetting/classdbconection.php): failed to open stream: No such file or directory in /home/neotericschools/public_html/mcdl.mul.edu.pk/api/mobile/index.php on line 6
+[21-Aug-2025 08:47:11 UTC] PHP Warning:  include(): Failed opening 'includes/dbsetting/classdbconection.php' for inclusion (include_path='.:/opt/cpanel/ea-php74/root/usr/share/pear') in /home/neotericschools/public_html/mcdl.mul.edu.pk/api/mobile/index.php on line 6
+[21-Aug-2025 08:47:11 UTC] PHP Warning:  include(includes/functions/functions.php): failed to open stream: No such file or directory in /home/neotericschools/public_html/mcdl.mul.edu.pk/api/mobile/index.php on line 7
+[21-Aug-2025 08:47:11 UTC] PHP Warning:  include(): Failed opening 'includes/functions/functions.php' for inclusion (include_path='.:/opt/cpanel/ea-php74/root/usr/share/pear') in /home/neotericschools/public_html/mcdl.mul.edu.pk/api/mobile/index.php on line 7
+[21-Aug-2025 08:47:11 UTC] PHP Fatal error:  Uncaught Error: Class 'dblms' not found in /home/neotericschools/public_html/mcdl.mul.edu.pk/api/mobile/index.php:8
+Stack trace:
+#0 {main}
+  thrown in /home/neotericschools/public_html/mcdl.mul.edu.pk/api/mobile/index.php on line 8
+[21-Aug-2025 08:47:13 UTC] PHP Warning:  include(language/app_language.php): failed to open stream: No such file or directory in /home/neotericschools/public_html/mcdl.mul.edu.pk/api/mobile/index.php on line 3
+[21-Aug-2025 08:47:13 UTC] PHP Warning:  include(): Failed opening 'language/app_language.php' for inclusion (include_path='.:/opt/cpanel/ea-php74/root/usr/share/pear') in /home/neotericschools/public_html/mcdl.mul.edu.pk/api/mobile/index.php on line 3
+[21-Aug-2025 08:47:13 UTC] PHP Warning:  include(includes/dbsetting/lms_vars_config.php): failed to open stream: No such file or directory in /home/neotericschools/public_html/mcdl.mul.edu.pk/api/mobile/index.php on line 5
+[21-Aug-2025 08:47:13 UTC] PHP Warning:  include(): Failed opening 'includes/dbsetting/lms_vars_config.php' for inclusion (include_path='.:/opt/cpanel/ea-php74/root/usr/share/pear') in /home/neotericschools/public_html/mcdl.mul.edu.pk/api/mobile/index.php on line 5
+[21-Aug-2025 08:47:13 UTC] PHP Warning:  include(includes/dbsetting/classdbconection.php): failed to open stream: No such file or directory in /home/neotericschools/public_html/mcdl.mul.edu.pk/api/mobile/index.php on line 6
+[21-Aug-2025 08:47:13 UTC] PHP Warning:  include(): Failed opening 'includes/dbsetting/classdbconection.php' for inclusion (include_path='.:/opt/cpanel/ea-php74/root/usr/share/pear') in /home/neotericschools/public_html/mcdl.mul.edu.pk/api/mobile/index.php on line 6
+[21-Aug-2025 08:47:13 UTC] PHP Warning:  include(includes/functions/functions.php): failed to open stream: No such file or directory in /home/neotericschools/public_html/mcdl.mul.edu.pk/api/mobile/index.php on line 7
+[21-Aug-2025 08:47:13 UTC] PHP Warning:  include(): Failed opening 'includes/functions/functions.php' for inclusion (include_path='.:/opt/cpanel/ea-php74/root/usr/share/pear') in /home/neotericschools/public_html/mcdl.mul.edu.pk/api/mobile/index.php on line 7
+[21-Aug-2025 08:47:13 UTC] PHP Fatal error:  Uncaught Error: Class 'dblms' not found in /home/neotericschools/public_html/mcdl.mul.edu.pk/api/mobile/index.php:8
+Stack trace:
+#0 {main}
+  thrown in /home/neotericschools/public_html/mcdl.mul.edu.pk/api/mobile/index.php on line 8
+[21-Aug-2025 08:47:15 UTC] PHP Warning:  include(language/app_language.php): failed to open stream: No such file or directory in /home/neotericschools/public_html/mcdl.mul.edu.pk/api/mobile/index.php on line 3
+[21-Aug-2025 08:47:15 UTC] PHP Warning:  include(): Failed opening 'language/app_language.php' for inclusion (include_path='.:/opt/cpanel/ea-php74/root/usr/share/pear') in /home/neotericschools/public_html/mcdl.mul.edu.pk/api/mobile/index.php on line 3
+[21-Aug-2025 08:47:15 UTC] PHP Warning:  include(includes/dbsetting/lms_vars_config.php): failed to open stream: No such file or directory in /home/neotericschools/public_html/mcdl.mul.edu.pk/api/mobile/index.php on line 5
+[21-Aug-2025 08:47:15 UTC] PHP Warning:  include(): Failed opening 'includes/dbsetting/lms_vars_config.php' for inclusion (include_path='.:/opt/cpanel/ea-php74/root/usr/share/pear') in /home/neotericschools/public_html/mcdl.mul.edu.pk/api/mobile/index.php on line 5
+[21-Aug-2025 08:47:15 UTC] PHP Warning:  include(includes/dbsetting/classdbconection.php): failed to open stream: No such file or directory in /home/neotericschools/public_html/mcdl.mul.edu.pk/api/mobile/index.php on line 6
+[21-Aug-2025 08:47:15 UTC] PHP Warning:  include(): Failed opening 'includes/dbsetting/classdbconection.php' for inclusion (include_path='.:/opt/cpanel/ea-php74/root/usr/share/pear') in /home/neotericschools/public_html/mcdl.mul.edu.pk/api/mobile/index.php on line 6
+[21-Aug-2025 08:47:15 UTC] PHP Warning:  include(includes/functions/functions.php): failed to open stream: No such file or directory in /home/neotericschools/public_html/mcdl.mul.edu.pk/api/mobile/index.php on line 7
+[21-Aug-2025 08:47:15 UTC] PHP Warning:  include(): Failed opening 'includes/functions/functions.php' for inclusion (include_path='.:/opt/cpanel/ea-php74/root/usr/share/pear') in /home/neotericschools/public_html/mcdl.mul.edu.pk/api/mobile/index.php on line 7
+[21-Aug-2025 08:47:15 UTC] PHP Fatal error:  Uncaught Error: Class 'dblms' not found in /home/neotericschools/public_html/mcdl.mul.edu.pk/api/mobile/index.php:8
+Stack trace:
+#0 {main}
+  thrown in /home/neotericschools/public_html/mcdl.mul.edu.pk/api/mobile/index.php on line 8
+[21-Aug-2025 08:47:17 UTC] PHP Warning:  include(language/app_language.php): failed to open stream: No such file or directory in /home/neotericschools/public_html/mcdl.mul.edu.pk/api/mobile/index.php on line 3
+[21-Aug-2025 08:47:17 UTC] PHP Warning:  include(): Failed opening 'language/app_language.php' for inclusion (include_path='.:/opt/cpanel/ea-php74/root/usr/share/pear') in /home/neotericschools/public_html/mcdl.mul.edu.pk/api/mobile/index.php on line 3
+[21-Aug-2025 08:47:17 UTC] PHP Warning:  include(includes/dbsetting/lms_vars_config.php): failed to open stream: No such file or directory in /home/neotericschools/public_html/mcdl.mul.edu.pk/api/mobile/index.php on line 5
+[21-Aug-2025 08:47:17 UTC] PHP Warning:  include(): Failed opening 'includes/dbsetting/lms_vars_config.php' for inclusion (include_path='.:/opt/cpanel/ea-php74/root/usr/share/pear') in /home/neotericschools/public_html/mcdl.mul.edu.pk/api/mobile/index.php on line 5
+[21-Aug-2025 08:47:17 UTC] PHP Warning:  include(includes/dbsetting/classdbconection.php): failed to open stream: No such file or directory in /home/neotericschools/public_html/mcdl.mul.edu.pk/api/mobile/index.php on line 6
+[21-Aug-2025 08:47:17 UTC] PHP Warning:  include(): Failed opening 'includes/dbsetting/classdbconection.php' for inclusion (include_path='.:/opt/cpanel/ea-php74/root/usr/share/pear') in /home/neotericschools/public_html/mcdl.mul.edu.pk/api/mobile/index.php on line 6
+[21-Aug-2025 08:47:17 UTC] PHP Warning:  include(includes/functions/functions.php): failed to open stream: No such file or directory in /home/neotericschools/public_html/mcdl.mul.edu.pk/api/mobile/index.php on line 7
+[21-Aug-2025 08:47:17 UTC] PHP Warning:  include(): Failed opening 'includes/functions/functions.php' for inclusion (include_path='.:/opt/cpanel/ea-php74/root/usr/share/pear') in /home/neotericschools/public_html/mcdl.mul.edu.pk/api/mobile/index.php on line 7
+[21-Aug-2025 08:47:17 UTC] PHP Fatal error:  Uncaught Error: Class 'dblms' not found in /home/neotericschools/public_html/mcdl.mul.edu.pk/api/mobile/index.php:8
+Stack trace:
+#0 {main}
+  thrown in /home/neotericschools/public_html/mcdl.mul.edu.pk/api/mobile/index.php on line 8
+[21-Aug-2025 08:47:20 UTC] PHP Warning:  include(language/app_language.php): failed to open stream: No such file or directory in /home/neotericschools/public_html/mcdl.mul.edu.pk/api/mobile/index.php on line 3
+[21-Aug-2025 08:47:20 UTC] PHP Warning:  include(): Failed opening 'language/app_language.php' for inclusion (include_path='.:/opt/cpanel/ea-php74/root/usr/share/pear') in /home/neotericschools/public_html/mcdl.mul.edu.pk/api/mobile/index.php on line 3
+[21-Aug-2025 08:47:20 UTC] PHP Warning:  include(includes/dbsetting/lms_vars_config.php): failed to open stream: No such file or directory in /home/neotericschools/public_html/mcdl.mul.edu.pk/api/mobile/index.php on line 5
+[21-Aug-2025 08:47:20 UTC] PHP Warning:  include(): Failed opening 'includes/dbsetting/lms_vars_config.php' for inclusion (include_path='.:/opt/cpanel/ea-php74/root/usr/share/pear') in /home/neotericschools/public_html/mcdl.mul.edu.pk/api/mobile/index.php on line 5
+[21-Aug-2025 08:47:20 UTC] PHP Warning:  include(includes/dbsetting/classdbconection.php): failed to open stream: No such file or directory in /home/neotericschools/public_html/mcdl.mul.edu.pk/api/mobile/index.php on line 6
+[21-Aug-2025 08:47:20 UTC] PHP Warning:  include(): Failed opening 'includes/dbsetting/classdbconection.php' for inclusion (include_path='.:/opt/cpanel/ea-php74/root/usr/share/pear') in /home/neotericschools/public_html/mcdl.mul.edu.pk/api/mobile/index.php on line 6
+[21-Aug-2025 08:47:20 UTC] PHP Warning:  include(includes/functions/functions.php): failed to open stream: No such file or directory in /home/neotericschools/public_html/mcdl.mul.edu.pk/api/mobile/index.php on line 7
+[21-Aug-2025 08:47:20 UTC] PHP Warning:  include(): Failed opening 'includes/functions/functions.php' for inclusion (include_path='.:/opt/cpanel/ea-php74/root/usr/share/pear') in /home/neotericschools/public_html/mcdl.mul.edu.pk/api/mobile/index.php on line 7
+[21-Aug-2025 08:47:20 UTC] PHP Fatal error:  Uncaught Error: Class 'dblms' not found in /home/neotericschools/public_html/mcdl.mul.edu.pk/api/mobile/index.php:8
+Stack trace:
+#0 {main}
+  thrown in /home/neotericschools/public_html/mcdl.mul.edu.pk/api/mobile/index.php on line 8
+[21-Aug-2025 08:48:21 UTC] PHP Warning:  include(language/app_language.php): failed to open stream: No such file or directory in /home/neotericschools/public_html/mcdl.mul.edu.pk/api/mobile/index.php on line 3
+[21-Aug-2025 08:48:21 UTC] PHP Warning:  include(): Failed opening 'language/app_language.php' for inclusion (include_path='.:/opt/cpanel/ea-php74/root/usr/share/pear') in /home/neotericschools/public_html/mcdl.mul.edu.pk/api/mobile/index.php on line 3
+[21-Aug-2025 08:48:21 UTC] PHP Warning:  include(includes/dbsetting/lms_vars_config.php): failed to open stream: No such file or directory in /home/neotericschools/public_html/mcdl.mul.edu.pk/api/mobile/index.php on line 5
+[21-Aug-2025 08:48:21 UTC] PHP Warning:  include(): Failed opening 'includes/dbsetting/lms_vars_config.php' for inclusion (include_path='.:/opt/cpanel/ea-php74/root/usr/share/pear') in /home/neotericschools/public_html/mcdl.mul.edu.pk/api/mobile/index.php on line 5
+[21-Aug-2025 08:48:21 UTC] PHP Warning:  include(includes/dbsetting/classdbconection.php): failed to open stream: No such file or directory in /home/neotericschools/public_html/mcdl.mul.edu.pk/api/mobile/index.php on line 6
+[21-Aug-2025 08:48:21 UTC] PHP Warning:  include(): Failed opening 'includes/dbsetting/classdbconection.php' for inclusion (include_path='.:/opt/cpanel/ea-php74/root/usr/share/pear') in /home/neotericschools/public_html/mcdl.mul.edu.pk/api/mobile/index.php on line 6
+[21-Aug-2025 08:48:21 UTC] PHP Warning:  include(includes/functions/functions.php): failed to open stream: No such file or directory in /home/neotericschools/public_html/mcdl.mul.edu.pk/api/mobile/index.php on line 7
+[21-Aug-2025 08:48:21 UTC] PHP Warning:  include(): Failed opening 'includes/functions/functions.php' for inclusion (include_path='.:/opt/cpanel/ea-php74/root/usr/share/pear') in /home/neotericschools/public_html/mcdl.mul.edu.pk/api/mobile/index.php on line 7
+[21-Aug-2025 08:48:21 UTC] PHP Fatal error:  Uncaught Error: Class 'dblms' not found in /home/neotericschools/public_html/mcdl.mul.edu.pk/api/mobile/index.php:8
+Stack trace:
+#0 {main}
+  thrown in /home/neotericschools/public_html/mcdl.mul.edu.pk/api/mobile/index.php on line 8
