@@ -1,0 +1,27 @@
+
+==================================================
+{
+    "Date": "2026-09-11 12:11:56",
+    "Method": "POST",
+    "URI": "/bankcopay/success",
+    "IP": "187.77.169.19",
+    "User-Agent": "",
+    "Headers": {
+        "Host": "mcdl.mul.edu.pk",
+        "Accept": "*/*",
+        "Content-Type": "application/json",
+        "Content-Length": "428"
+    },
+    "Raw Request": "{\"response\":{\"success\":true,\"code\":200,\"description\":\"Transaction status retrieved successfully\",\"error\":null},\"transaction\":{\"billnumber\":\"10019251079990\",\"paymentmsgid\":\"BAFLP2M0e45783c74f548f7b4e393c7\",\"currency\":\"PKR\",\"amount\":10,\"paymentstatus\":\"success\"},\"merchant\":{\"orderid\":\"706077979595406\",\"storeid\":\"12345\",\"merchantname\":\"MINHAJ UNIVERSITY (DODL)\"},\"customer\":{\"challanno\":251079990,\"customername\":\"Sufyan Arshad\"}}"
+}
+
+==================================================
+{
+    "code": 200,
+    "description": "Transaction status retrieved successfully",
+    "paymentstatus": "success",
+    "amount": 10,
+    "txnid": "BAFLP2M0e45783c74f548f7b4e393c7",
+    "orderid": "706077979595406",
+    "ChallanNo": 251079990
+}

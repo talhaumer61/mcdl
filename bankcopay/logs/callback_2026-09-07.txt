@@ -1,0 +1,54 @@
+
+==================================================
+{
+    "Date": "2026-09-07 12:27:33",
+    "Method": "POST",
+    "URI": "/bankcopay/success",
+    "IP": "187.77.169.19",
+    "User-Agent": "",
+    "Headers": {
+        "Host": "mcdl.mul.edu.pk",
+        "Accept": "*/*",
+        "Content-Type": "application/json",
+        "Content-Length": "428"
+    },
+    "Raw Request": "{\"response\":{\"success\":true,\"code\":200,\"description\":\"Transaction status retrieved successfully\",\"error\":null},\"transaction\":{\"billnumber\":\"10019260280609\",\"paymentmsgid\":\"BAFLP2M30dd48ec9bdf4f54b7fa13e6\",\"currency\":\"PKR\",\"amount\":10,\"paymentstatus\":\"success\"},\"merchant\":{\"orderid\":\"740337515672052\",\"storeid\":\"12345\",\"merchantname\":\"MINHAJ UNIVERSITY (DODL)\"},\"customer\":{\"challanno\":260280609,\"customername\":\"Sufyan Arshad\"}}"
+}
+
+==================================================
+{
+    "code": 200,
+    "description": "Transaction status retrieved successfully",
+    "paymentstatus": "success",
+    "amount": 10,
+    "txnid": "BAFLP2M30dd48ec9bdf4f54b7fa13e6",
+    "orderid": "740337515672052",
+    "ChallanNo": 260280609
+}
+
+==================================================
+{
+    "Date": "2026-09-07 13:14:33",
+    "Method": "POST",
+    "URI": "/bankcopay/success",
+    "IP": "187.77.169.19",
+    "User-Agent": "",
+    "Headers": {
+        "Host": "mcdl.mul.edu.pk",
+        "Accept": "*/*",
+        "Content-Type": "application/json",
+        "Content-Length": "428"
+    },
+    "Raw Request": "{\"response\":{\"success\":true,\"code\":200,\"description\":\"Transaction status retrieved successfully\",\"error\":null},\"transaction\":{\"billnumber\":\"10019250415554\",\"paymentmsgid\":\"BAFLP2M54f0f87b5c99401eacafaf0b\",\"currency\":\"PKR\",\"amount\":10,\"paymentstatus\":\"success\"},\"merchant\":{\"orderid\":\"181831572874531\",\"storeid\":\"12345\",\"merchantname\":\"MINHAJ UNIVERSITY (DODL)\"},\"customer\":{\"challanno\":250415554,\"customername\":\"Sufyan Arshad\"}}"
+}
+
+==================================================
+{
+    "code": 200,
+    "description": "Transaction status retrieved successfully",
+    "paymentstatus": "success",
+    "amount": 10,
+    "txnid": "BAFLP2M54f0f87b5c99401eacafaf0b",
+    "orderid": "181831572874531",
+    "ChallanNo": 250415554
+}
