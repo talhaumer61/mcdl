@@ -33,6 +33,7 @@ $viewNames = [
     'quiz-report'                                   => 'quiz_report',
     'inquiries-report'                              => 'inquiries_report',
     'interns-report'                                => 'interns_report',
+    'fee-collection-report'                          => 'fee_collection_report',
 
 ];
 echo' 

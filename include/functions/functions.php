@@ -1903,4 +1903,18 @@ function getInternDocTypes($id = null) {
 	}
 	return $data;
 }
+
+function get_payMode($id = '') {
+
+	$listModes = array (
+							  '1' => 'Cash'		 
+							, '2' => 'PayFast'		 
+							, '3' => 'Raast'
+						 );
+	if(!empty($id)){
+		return $listModes[$id];
+	}else{
+		return $listModes;
+	}
+}
 ?>
