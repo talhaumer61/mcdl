@@ -32,7 +32,7 @@ $viewNames = [
     'upcoming-trainings-interested-students'        => 'upcoming_interested_students',
     'quiz-report'                                   => 'quiz_report',
     'inquiries-report'                              => 'inquiries_report',
-
+    'fee-collection-report'                          => 'fee_collection_report',
 ];
 echo' 
 <title>'.moduleName(false).' - '.TITLE_HEADER.'</title>

@@ -94,7 +94,7 @@ if($data['response']['code'] == 200) {
                              'status'			=> 1
                             ,'paid_amount'		=> cleanvars($data['transaction']['amount'])
                             ,'paid_date'		=> date('Y-m-d')
-                            //,'id_modify'		=> cleanvars($_SESSION['userlogininfo']['LOGINIDA'])
+                            ,'pay_mode'         => 3
                             ,'date_modify'		=> date('Y-m-d G:i:s')
                     );
     $sqllms = $dblms->Update(CHALLANS, $values , "WHERE challan_id  = '".cleanvars($row['challan_id'])."' AND challan_no = '".cleanvars($data['customer']['challanno'])."'");

@@ -92,6 +92,20 @@ echo'
                     </ul>
                 </div>
             </div>
+            <div class="col-sm-4">
+                <div class="verti-sitemap">
+                    <ul class="list-unstyled mb-0">
+                        <li class="p-0 parent-title"><a href="javascript: void(0);" class="fw-semibold fs-14">Fee Collection</a></li>
+                        <li class="mb-3">
+                            <div class="first-list">
+                                <div class="list-wrap">
+                                    <a href="reports.php?view=fee-collection-report" class="fw-medium text-primary">Fee Collection Report</a>
+                                </div>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
         </div>
     </div>
 </div>';

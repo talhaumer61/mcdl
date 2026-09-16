@@ -28,6 +28,7 @@ if(isset($_POST['update_challan'])) {
 							,'remarks'			=> cleanvars($_POST['remarks'])
 							,'paid_amount'		=> cleanvars($_POST['total_amount'])
 							,'paid_date'		=> date('Y-m-d')
+							,'pay_mode'         => 1
 							,'date_modify'		=> date('Y-m-d G:i:s')
 							,'id_modify'		=> cleanvars($_SESSION['userlogininfo']['LOGINIDA'])
 						);

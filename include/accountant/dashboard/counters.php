@@ -1,4 +1,46 @@
 <?php
+$totalAmount   = 0;
+$paidAmount    = 0;
+$pendingAmount = 0;
+
+// Total Amount
+$conditionStats = array(
+    'select'      => 'SUM(ch.total_amount) as amount',
+    'join'        => 'INNER JOIN '.STUDENTS.' s ON s.std_id = ch.id_std',
+    'where'       => array('ch.is_deleted' => 0),
+    'search_by'   => ''.$search_query.'',
+    'return_type' => 'single'
+);
+$totalStats = $dblms->getRows(CHALLANS.' ch', $conditionStats);
+$totalAmount = !empty($totalStats['amount']) ? number_format($totalStats['amount'], 2, '.', '') : '0.00';
+
+// Paid Amount
+$conditionStats = array(
+    'select'      => 'SUM(ch.paid_amount) as amount',
+    'join'        => 'INNER JOIN '.STUDENTS.' s ON s.std_id = ch.id_std',
+    'where'       => array(
+        'ch.is_deleted' => 0,
+        'ch.status'     => 1
+    ),
+    'search_by'   => ''.$search_query.'',
+    'return_type' => 'single'
+);
+$paidStats = $dblms->getRows(CHALLANS.' ch', $conditionStats);
+$paidAmount = !empty($paidStats['amount']) ? number_format($paidStats['amount'], 2, '.', '') : '0.00';
+
+// Pending Amount
+$conditionStats = array(
+    'select'      => 'SUM(ch.total_amount) as amount',
+    'join'        => 'INNER JOIN '.STUDENTS.' s ON s.std_id = ch.id_std',
+    'where'       => array(
+        'ch.is_deleted' => 0,
+        'ch.status'     => 2
+    ),
+    'search_by'   => ''.$search_query.'',
+    'return_type' => 'single'
+);
+$pendingStats = $dblms->getRows(CHALLANS.' ch', $conditionStats);
+$pendingAmount = !empty($pendingStats['amount']) ? number_format($pendingStats['amount'], 2, '.', '') : '0.00';
 echo' 
 <div class="row mb-3">
     <div class="col-md-12">
@@ -110,6 +152,86 @@ echo'
                             </div>
                             <div class="avatar-sm flex-shrink-0">
                                 <span class="avatar-title bg-soft-info rounded fs-3"><i class="ri-article-line text-info"></i></span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Challan Statistics -->
+        <div class="row">
+            <div class="col-12 mb-3">
+                <h5 class="text-uppercase fw-bold" style="color:#6691e7;">Fee Collection</h5>
+            </div>
+        </div>
+
+        <div class="row mb-3">
+            <!-- 1. Total Amount Card -->
+            <div class="col-xl-4 col-md-4 mb-3">
+                <div class="card card-animate">
+                    <div class="card-body">
+                        <div class="d-flex align-items-center">
+                            <div class="flex-grow-1 overflow-hidden">
+                                <p class="text-uppercase fw-bold text-muted text-truncate mb-0">Total Challan Amount</p>
+                            </div>
+                        </div>
+                        <div class="d-flex align-items-end justify-content-between mt-4">
+                            <div>
+                                <h4 class="fs-22 fw-semibold ff-secondary mb-4"><span class="counter-value" data-target="'.$totalAmount.'"></span></h4>
+                                <a href="javascript: void(0);" class="text-decoration-underline text-muted">
+                                    Total Amount
+                                </a>
+                            </div>
+                            <div class="avatar-sm flex-shrink-0">
+                                <span class="avatar-title bg-soft-primary rounded fs-3"><i class="ri-money-dollar-circle-line text-primary"></i></span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 2. Paid Amount Card -->
+            <div class="col-xl-4 col-md-4 mb-3">
+                <div class="card card-animate">
+                    <div class="card-body">
+                        <div class="d-flex align-items-center">
+                            <div class="flex-grow-1 overflow-hidden">
+                                <p class="text-uppercase fw-bold text-muted text-truncate mb-0">Paid Challan Amount</p>
+                            </div>
+                        </div>
+                        <div class="d-flex align-items-end justify-content-between mt-4">
+                            <div>
+                                <h4 class="fs-22 fw-semibold ff-secondary mb-4"><span class="counter-value" data-target="'.$paidAmount.'"></span></h4>
+                                <a href="javascript: void(0);" class="text-decoration-underline text-muted">
+                                    Paid Amount
+                                </a>
+                            </div>
+                            <div class="avatar-sm flex-shrink-0">
+                                <span class="avatar-title bg-soft-success rounded fs-3"><i class="ri-checkbox-circle-line text-success"></i></span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 3. Pending Amount Card -->
+            <div class="col-xl-4 col-md-4 mb-3">
+                <div class="card card-animate">
+                    <div class="card-body">
+                        <div class="d-flex align-items-center">
+                            <div class="flex-grow-1 overflow-hidden">
+                                <p class="text-uppercase fw-bold text-muted text-truncate mb-0">Pending Challan Amount</p>
+                            </div>
+                        </div>
+                        <div class="d-flex align-items-end justify-content-between mt-4">
+                            <div>
+                                <h4 class="fs-22 fw-semibold ff-secondary mb-4"><span class="counter-value" data-target="'.$pendingAmount.'"></span></h4>
+                                <a href="javascript: void(0);" class="text-decoration-underline text-muted">
+                                    Pending Amount
+                                </a>
+                            </div>
+                            <div class="avatar-sm flex-shrink-0">
+                                <span class="avatar-title bg-soft-warning rounded fs-3"><i class="ri-time-line text-warning"></i></span>
                             </div>
                         </div>
                     </div>
