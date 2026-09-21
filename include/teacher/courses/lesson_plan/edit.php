@@ -160,40 +160,72 @@ echo'
         <button type="submit" class="btn btn-primary btn-sm" name="submit_edit"><i class="ri-edit-circle-line align-bottom me-1"></i>Edit '.moduleName(LMS_VIEW).'</button>
     </div>
 </form>
-<script type="text/javascript">';
-    if (!empty($result['lesson_video_code']) && !empty($result['lesson_reading_detail'])){
-        
-    } else if (!empty($result['lesson_video_code'])) {
-        echo '
-        $("#idReading").hide();';
-    } else {
-        echo '
-        $("#idVideo").hide();';
-    }
-    echo'
-    CKEDITOR.replace(\'ckeditor1\');
-    CKEDITOR.replace(\'ckeditor2\');
+<script type="text/javascript">
 
-    function get_TopicContent(id = ""){
-        var idVideo     = $("#idVideo");
-        var idReading   = $("#idReading");
-        if (id == 1) {
-            idVideo.fadeIn();
-            idReading.fadeOut();
-            idReading.find("textarea").removeAttr("required");
-        } else if (id == 2) {            
-            idReading.fadeIn();
-            idVideo.fadeOut();
-            idVideo.find("input").removeAttr("required");
-        } else if (id == 3) {
-            idVideo.fadeIn();
-            idReading.fadeIn();
-        } else {
-            idVideo.fadeOut();
-            idReading.fadeOut();
-            idVideo.find("input").removeAttr("required");
-            idReading.find("textarea").removeAttr("required");
+    CKEDITOR.replace("ckeditor1");
+    CKEDITOR.replace("ckeditor2");
+
+    function get_TopicContent(id = "") {
+
+        var idVideo   = $("#idVideo");
+        var idReading = $("#idReading");
+
+        var videoInput   = $("#lesson_video_code_vimeo");
+        var readingInput = $("#ckeditor2");
+
+        // Video only
+        if (id == "1") {
+
+            idVideo.show();
+            idReading.hide();
+
+            videoInput.prop("required", true);
+            readingInput.prop("required", false);
+
+        }
+
+        // Reading only
+        else if (id == "2") {
+
+            idVideo.hide();
+            idReading.show();
+
+            videoInput.prop("required", false);
+            readingInput.prop("required", true);
+
+        }
+
+        // Both Video + Reading
+        else if (id == "3") {
+
+            idVideo.show();
+            idReading.show();
+
+            videoInput.prop("required", true);
+            readingInput.prop("required", true);
+
+        }
+
+        // Nothing selected
+        else {
+
+            idVideo.hide();
+            idReading.hide();
+
+            videoInput.prop("required", false);
+            readingInput.prop("required", false);
+
         }
     }
+
+    // Handle existing database value on page load
+    $(document).ready(function () {
+
+        var topicContent = $("select[name=\"lesson_content\"]").val();
+
+        get_TopicContent(topicContent);
+
+    });
+
 </script>';
 include_once ('script.php');

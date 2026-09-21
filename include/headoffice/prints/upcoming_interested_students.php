@@ -71,6 +71,7 @@ if (!empty($STUDENT_INTERESTED_COURSES)) {
                 <th width="40">#</th>
                 <th>Name</th>
                 <th>Email</th>
+                <th>WhatsApp</th>
                 <th>City</th>
                 <th>Course</th>
             </tr>
@@ -89,6 +90,7 @@ if (!empty($STUDENT_INTERESTED_COURSES)) {
             <td class="text-center">'.$sr.'</td>
             <td>'.$row['name'].'</td>
             <td>'.(!empty($row['email']) ? $row['email'] : "-").'</td>
+            <td '.(empty($row['whatsapp']) ? 'class="text-center"' : "-").'>'.(!empty($row['whatsapp']) ? $row['whatsapp'] : "-").'</td>
             <td>'.(!empty($row['city']) ? $row['city'] : "-").'</td>
             <td>'.(!empty($row['curs_name']) ? $row['curs_name'] : "-").'</td>
         </tr>';
@@ -98,7 +100,7 @@ if (!empty($STUDENT_INTERESTED_COURSES)) {
         <tr>
             <th></th>
             <th class="text-center">TOTAL</th>
-            <th colspan="3">'.$totalStudents.'</th>
+            <th colspan="4">'.$totalStudents.'</th>
         </tr>
         </tbody>
     </table>';
