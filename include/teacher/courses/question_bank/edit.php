@@ -4,6 +4,9 @@ $result    = $coursecls->get_coursequestionbank(LMS_EDIT_ID, CURS_ID);
 
 // COURSE LESSONS
 $lessons    = $coursecls->get_courselessons(CURS_ID);
+// echo '<pre>';
+// print_r($result);
+
 echo'
 <form autocomplete="off" class="form-validate"  enctype="multipart/form-data" method="post" accept-charset="utf-8">
     <div class="row">
@@ -120,5 +123,28 @@ echo'
         <a href="'.moduleName().'.php?'.$redirection.'" class="btn btn-danger btn-sm""><i class="ri-close-circle-line align-bottom me-1"></i>Close</a>
         <button type="submit" class="btn btn-primary btn-sm" name="submit_edit"><i class="ri-edit-circle-line align-bottom me-1"></i>Edit Question</button>
     </div>
-</form>';
+</form>
+<script type="text/javascript">
+
+    function get_QuestionType(id = "") {
+
+        if (id == "3") {
+            $("#multipleCh").show();
+        } else {
+            $("#multipleCh").hide();
+        }
+
+    }
+
+    // Handle existing database value on edit page
+    $(document).ready(function () {
+
+        var questionType = $("select[name=\"qns_type\"]").val();
+
+        get_QuestionType(questionType);
+
+    });
+
+</script>
+';
 ?>
