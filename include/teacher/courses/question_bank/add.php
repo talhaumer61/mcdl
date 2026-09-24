@@ -1,6 +1,18 @@
 <?php
 $lessons    = $coursecls->get_courselessons(CURS_ID);
 
+$selectedLessons = [];
+
+if (!empty($_GET['id_lesson'])) {
+    $selectedLessons = explode(',', $_GET['id_lesson']);
+}
+
+$selectedStatus = isset($_GET['qns_status']) ? $_GET['qns_status'] : '';
+$selectedLevel  = isset($_GET['qns_level']) ? $_GET['qns_level'] : '';
+$selectedType   = isset($_GET['qns_type']) ? $_GET['qns_type'] : '';
+$qnsMarks       = isset($_GET['qns_marks']) ? $_GET['qns_marks'] : '';
+// echo $selectedStatus;
+
 echo'
 <form autocomplete="off" class="form-validate" enctype="multipart/form-data" method="post" accept-charset="utf-8">
     <div class="row">
@@ -15,7 +27,15 @@ echo'
                     <select class="form-control" data-choices data-choices-removeItem multiple name="id_lesson[]" required="">
                         <option value=""> Choose one</option>';
                         foreach($lessons as $key => $val):
-                            echo'<option value="'.$val['lesson_id'].'" >'.$val['lesson_topic'].'</option>';
+                            $selected = in_array(
+                                (string)$val['lesson_id'],
+                                array_map('strval', $selectedLessons)
+                            ) ? 'selected' : '';
+
+                            echo '
+                            <option value="'.$val['lesson_id'].'" '.$selected.'>
+                                '.$val['lesson_topic'].'
+                            </option>';
                         endforeach;
                         echo'
                     </select>
@@ -31,7 +51,8 @@ echo'
                     <select class="form-control" data-choices name="qns_status" required="">
                         <option value=""> Choose one</option>';
                         foreach(get_status() as $key => $status):
-                            echo'<option value="'.$key.'" >'.$status.'</option>';
+                            $selected = ($key == $selectedStatus) ? 'selected' : '';
+                            echo'<option value="'.$key.'" '.$selected.'>'.$status.'</option>';
                         endforeach;
                         echo'
                     </select>
@@ -41,7 +62,8 @@ echo'
                     <select class="form-control" data-choices name="qns_level" required="">
                         <option value=""> Choose one</option>';
                         foreach(get_QnsLevel() as $key => $val):
-                            echo'<option value="'.$key.'" >'.$val.'</option>';
+                            $selected = ($key == $selectedLevel) ? 'selected': '';
+                            echo'<option value="'.$key.'" '.$selected.'>'.$val.'</option>';
                         endforeach;
                         echo'
                     </select>
@@ -51,14 +73,17 @@ echo'
                     <select class="form-control" data-choices name="qns_type" required="" onchange="get_QuestionType(this.value);">
                         <option value=""> Choose one</option>';
                         foreach(get_QnsType() as $key => $val):
-                            echo'<option value="'.$key.'" >'.$val.'</option>';
+                            $selected = ($key == $selectedType)
+                                ? 'selected'
+                                : '';
+                            echo'<option value="'.$key.'" '.$selected.'>'.$val.'</option>';
                         endforeach;
                         echo'
                     </select>
                 </div>
                 <div class="col-md-4 mb-2">
                     <label class="form-label">Question Marks</label>
-                    <input type="number" class="form-control" id="qns_marks" value="" name="qns_marks" readonly="">
+                    <input type="number" class="form-control" id="qns_marks" value="' . $qnsMarks . '" name="qns_marks" readonly="">
                 </div>
                 <div class="col-md-12 mb-2" id="multipleCh" style="display: none;">
                     <label class="form-label">Multiple Choice <span class="text-danger">*</span></label>

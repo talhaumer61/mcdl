@@ -64,10 +64,16 @@ if(isset($_POST['submit_add'])) {
 					}
 				}
 			}
+			// SAVE FORM VALUES IN REDIRECTION
+			$redirection .= '&id_lesson=' . urlencode(implode(',', $_POST['id_lesson']))
+							. '&qns_status=' . urlencode($_POST['qns_status'])
+							. '&qns_level=' . urlencode($_POST['qns_level'])
+							. '&qns_type=' . urlencode($_POST['qns_type'])
+							. '&qns_marks=' . urlencode($_POST['qns_marks']);
 			// REMARKS
 			sendRemark(moduleName(LMS_VIEW).' Added', '1', $latestID);
 			sessionMsg('Successfully', 'Record Successfully Added.', 'success');
-			header("Location: ".moduleName().".php?".$redirection."", true, 301);
+			header("Location: ".moduleName().".php?add&".$redirection."", true, 301);
 			exit();
 		}
 	}

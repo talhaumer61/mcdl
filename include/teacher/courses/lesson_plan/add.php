@@ -1,6 +1,11 @@
 <?php
 $lessons    = $coursecls->get_courselessons(CURS_ID);
 
+$id_week      = (isset($_GET['id_week'])) ? $_GET['id_week'] : '';
+$id_lecture   = (isset($_GET['id_lecture'])) ? $_GET['id_lecture'] : '';
+$lecture_status = (isset($_GET['lesson_status'])) ? $_GET['lesson_status'] : '';
+$id_parent_topic = (isset($_GET['id_parent_topic'])) ? $_GET['id_parent_topic'] : '';
+
 echo'
 <script src="assets/js/app.js"></script>
 <form autocomplete="off" class="form-validate" enctype="multipart/form-data" method="post" accept-charset="utf-8">
@@ -10,7 +15,7 @@ echo'
             <select class="form-control" data-choices name="id_week" required="">
                 <option value=""> Choose one</option>';
                 foreach(get_LessonWeeks() as $key => $val):
-                    echo'<option value="'.$key.'">'.moduleName(get_CourseWise($curs['curs_wise'])).' '.$val.'</option>';
+                    echo'<option value="'.$key.'" '.(($id_week == $key) ? 'selected' : '').'>'.moduleName(get_CourseWise($curs['curs_wise'])).' '.$val.'</option>';
                 endforeach;
                 echo'
             </select>
@@ -20,7 +25,7 @@ echo'
             <select class="form-control" data-choices name="id_lecture" required="">
                 <option value=""> Choose one</option>';
                 foreach(get_LessonLectures() as $key => $val):
-                    echo'<option value="'.$key.'">'.$val.'</option>';
+                    echo'<option value="'.$key.'" '.(($id_lecture == $key) ? 'selected' : '').'>'.$val.'</option>';
                 endforeach;
                 echo'
             </select>
@@ -36,7 +41,7 @@ echo'
             <select class="form-control" data-choices name="lesson_status" required="">
                 <option value=""> Choose one</option>';
                 foreach(get_status() as $key => $status):
-                    echo'<option value="'.$key.'">'.$status.'</option>';
+                    echo'<option value="'.$key.'" '.(($lecture_status == $key) ? 'selected' : '').'>'.$status.'</option>';
                 endforeach;
                 echo'
             </select>
@@ -60,7 +65,7 @@ echo'
                 <select class="form-control" data-choices name="id_parent_topic">
                     <option value=""> Choose one</option>';
                     foreach($lessons as $row):
-                        echo'<option value="'.$row['lesson_id'].'">'.$row['lesson_topic'].'</option>';
+                        echo'<option value="'.$row['lesson_id'].'" '.(($id_parent_topic == $row['lesson_id']) ? 'selected' : '').'>'.$row['lesson_topic'].'</option>';
                     endforeach;
                     echo'
                 </select>

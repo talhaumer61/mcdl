@@ -84,10 +84,13 @@ if(isset($_POST['submit_add'])) {
 					}
 				}
 			}
+
+			$redirection .= '&id_week='.$_POST['id_week'].'&id_lecture='.$_POST['id_lecture'].'&lesson_status='.$_POST['lesson_status'].'&id_parent_topic='.$_POST['id_parent_topic'].'';
+
 			// REMARKS
 			sendRemark(moduleName(LMS_VIEW).' Added', '1', $latestID);
 			sessionMsg('Successfully', 'Record Successfully Added.', 'success');
-			header("Location: ".moduleName().".php?".$redirection."", true, 301);
+			header("Location: ".moduleName().".php?add&".$redirection."", true, 301);
 			exit();
 		}
 	}
