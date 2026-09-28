@@ -30,6 +30,7 @@ $viewNames = [
     'skill-ambassadors-specific-course-revenue'     => 'ambassadors_specific_total_revenue',
     'upcoming-courses-interested-students'          => 'upcoming_interested_students',
     'upcoming-trainings-interested-students'        => 'upcoming_interested_students',
+    'upcoming-degrees-interested-students'          => 'upcoming_degrees_interested_students',
     'quiz-report'                                   => 'quiz_report',
     'inquiries-report'                              => 'inquiries_report',
     'interns-report'                                => 'interns_report',

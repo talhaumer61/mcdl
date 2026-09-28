@@ -122,6 +122,11 @@ echo'
                         <li class="mb-3">
                             <div class="first-list">
                                 <div class="list-wrap">
+                                    <a href="reports.php?view=upcoming-degrees-interested-students" class="fw-medium text-primary">Upcoming Degrees Interested Students</a>
+                                </div>
+                            </div>
+                            <div class="first-list">
+                                <div class="list-wrap">
                                     <a href="reports.php?view=upcoming-courses-interested-students&enroll_type=3" class="fw-medium text-primary">Upcoming Courses Interested Students</a>
                                 </div>
                             </div>
